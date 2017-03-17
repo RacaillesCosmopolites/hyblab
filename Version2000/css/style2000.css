@@ -1,0 +1,464 @@
+/*------------------------------------*\
+		$IMPORT
+\*------------------------------------*/
+
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700);
+
+
+/*------------------------------------*\
+		$RESET
+\*------------------------------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+	text-decoration: none;
+}
+
+
+/*------------------------------------*\
+		$BOX
+\*------------------------------------*/
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+
+/*------------------------------------*\
+		$HEADER
+\*------------------------------------*/
+
+body {
+	width: 100%;
+	height: 100%;
+	background: #2F3240;
+	color: #fff;
+	font-family: 'Fira Sans', sans-serif;
+	line-height: 1.5;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+header {
+	padding: 100px 22%;
+	color: #fff;
+	text-align: center;
+	background-image: url(../img/cover.png);
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+header h1 {
+	margin: 0 0 26px 0;
+	font-weight: 700;
+	font-size: 38px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+header p  {
+	margin: 0 0 40px 0;
+}
+
+.button {
+	font-weight: 400;
+	display: inline-block;
+	border: 1px solid #738bd7;
+	padding: 5px 15px 4px 15px;
+	border-radius: 6px;
+	text-transform: uppercase;
+	color: #738bd7;
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	-ms-transition: 0.2s ease-in-out;
+	-o-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+}
+
+.button:hover{
+	color: #ffffff;
+	background-color: #738bd7;
+}
+
+.sources {
+	margin: 0 10px 0 0;
+}
+
+
+/*------------------------------------*\
+		$NAV
+\*------------------------------------*/
+
+.nav {
+	z-index: 10;
+	top: 0;
+	position: -webkit-sticky;
+	position: sticky;
+	background: #22252E;
+	text-align: center;
+	padding: 16px 0;
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.6);
+}
+
+.nav ul {
+	overflow: auto;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.nav ul li {
+	float: left;
+	margin: 0 8px;
+	width: 50px;
+	height: 50px;
+	border-radius: 6px;
+	background-size:120%;
+	background-position:center;
+	background-repeat:no-repeat;
+	border:3px transparent solid;
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	-ms-transition: 0.2s ease-in-out;
+	-o-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+}
+
+.nav ul li:hover {
+	cursor: pointer;
+	border: 3px #fff solid;
+}
+
+.candidat.selected {
+	border:3px white solid;
+}
+
+
+#melenchon {
+	background-image:url(../img/melanchon.png);
+}
+
+#macron {
+	background-image:url(../img/macron.png);
+}
+
+#hamon {
+	background-image:url(../img/hamon.png);
+}
+
+#fillon {
+	background-image:url(../img/fillon.png);
+}
+
+#lepen {
+	background-image:url(../img/lepen.png);
+}
+
+
+/*------------------------------------*\
+		$CANDIDATS
+\*------------------------------------*/
+
+.prescandidat {
+	padding: 80px 18%;
+	color: #fff;
+	overflow: auto;
+}
+
+.prescandidat .identity {
+	overflow: auto;
+	float: left;
+	display: inline-block;
+}
+
+.prescandidat .identity img{
+	width: 24%;
+	float: left;
+	margin: 0 40px 0 0;
+	border-radius: 10px;
+}
+
+.prescandidat h2 {
+	margin: 6px 0 0 0;
+	font-weight: 500;
+	font-size: 28px;
+}
+
+.prescandidat h3 {
+	margin: 0 0 20px 0;
+	font-weight: 400;
+	font-size: 18px;
+}
+
+/*------------------------------------*\
+		$MAP
+\*------------------------------------*/
+
+.maps {
+	float: left;
+	overflow: auto;
+	width: 90%;
+}
+
+.map {
+	padding: 80px 14%;
+	background: #1A1C22;
+	overflow: auto;
+}
+
+.map1, .map2 {
+	float: left;
+	width: 45%;
+	margin: 0 5% 0 0;
+	text-align: center;
+}
+
+.map h1 {
+	margin: 0 0 50px 0;
+	font-weight: 700;
+	font-size: 28px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+.day {
+	display: inline-block;
+	overflow: auto;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.day img {
+	cursor: pointer;
+	float: left;
+	height: 40px;
+}
+
+.day span {
+	float: left;
+	margin: 10px 0 0 0;
+	font-weight: 500;
+}
+
+.legend {
+	overflow: auto;
+	float: left;
+	width: 10%;
+	padding: 16px 16px 10px 16px;
+	border-radius: 6px;
+	background: #fff;
+	color: #000;
+	font-weight: 400;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.legend h2 {
+	margin: 0 0 10px 0;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.number {
+	margin: 6px 0;
+}
+
+.legend .color {
+	display: inline-block;
+	border-radius: 2px;
+	width: 20px;
+	height: 20px;
+	margin: 0 10px 0 0;
+	background: red;
+}
+
+.legend p {
+	vertical-align: top;
+	display: inline-block;
+}
+
+#color100 {
+	opacity: 1;
+}
+
+#color80 {
+	opacity: 0.8;
+}
+
+#color60 {
+	opacity: 0.6;
+}
+
+#color40 {
+	opacity: 0.4;
+}
+
+#color20 {
+	opacity: 0.2;
+}
+
+
+/*------------------------------------*\
+		$VELO
+\*------------------------------------*/
+
+.container.velo {
+	position: relative;
+	height:30vh;
+	background-image:url(../PNG/ville.png);
+	background-size:contain;
+	width:100%;
+	background-color:rgba(0,0,0,.2);
+	margin-top:5vh;
+}
+
+.container.velo img{
+	overflow:left;
+	position:absolute;
+	bottom:-5vh;
+}
+
+.container.velo img:first-child{
+	left:20%;
+}
+
+/*Graph*/
+
+.container.graph h2 {
+	margin-bottom:2vh;
+}
+
+.container.graph {
+	position:relative;
+	height:50vh;
+}
+
+.container.graph .chart {
+	position:absolute;
+	bottom:0;
+	right:0;
+	margin:2em;
+}
+
+.container.graph .timeline-graph {
+	width:100%;
+	height:4vh;
+	position:absolute;
+	bottom:-2vh;
+	border-top:2px white solid;
+	border-bottom:2px white solid;
+}
+
+.container.graph .timeline-graph div {
+	float:left;
+	height:100%;
+	width:calc(100%/6);
+	background-color:rgba(255,255,255,.2);
+	text-align:center;
+	color:rgba(255,255,255,.7);
+	padding:4px 0;
+	font-size:14px;
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	-ms-transition: 0.2s ease-in-out;
+	-o-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+}
+
+.container.graph .timeline-graph div:hover {
+	cursor:pointer;
+}
+
+.container.graph .timeline-graph div.selected{
+	color:rgba(0,0,0,.9);
+}
+
+.container.graph .timeline-graph div.selected {
+	background-color:rgba(255,255,255,.9);
+}
+
+.container.graph nav {
+	width:10%;
+	margin-left:5%;
+	height:95%;
+}
+
+.container.graph nav div {
+	height:24%;
+	width:100%;
+	margin:3% auto;
+	border:2px transparent solid;
+}
+
+.container.graph nav div:nth-child(2) {
+	display:none;
+}
+
+.container.graph .twitter {
+	height:100%;
+	width:100%;
+	margin:0;
+}
+
+.container.graph nav .twitter div{
+	display:inline-block;
+	width:40%;
+	height:100%;
+	margin:0 4%;
+}
+
+.container.graph nav div img {
+	margin:0 auto;
+}
+
+.container.graph nav div.item-selected {
+	border:2px white solid;
+}
+
+.container.graph nav div:hover {
+	cursor:pointer;
+}

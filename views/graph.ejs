@@ -1,10 +1,13 @@
-<div style="margin: 10px;">
-	<canvas id="myChart" width="800" height="400"></canvas>
+<div class="chart">
+	<h2>5 candidats cette semaine</h2>
+	<canvas id="myChart" width="400" height="250"></canvas>
 </div>
+
 
 <script src="./js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="http://www.chartjs.org/assets/Chart.js"></script>
 <script type="text/javascript">
+var activeChart
 $(document).ready(function() {
 
 	var ctx = $("#myChart").get(0).getContext("2d");
@@ -29,8 +32,89 @@ $(document).ready(function() {
 	gradientorange.addColorStop(0, 'rgba(242, 129, 29, 0.4)');
 	gradientorange.addColorStop(1, 'rgba(245, 154, 74, 0.2)');
 
-var data = <%- datain %>;
-var options = <%- optionin %>;
-	new Chart(ctx).Line(data,options);
+	var data = <%- datain %>;
+	var options = <%- optionin %>;
+	activeChart = new Chart(ctx).Line(data,options);
+
+	var data2 = <%- data2 %>;
+
+
 });
+var data2 = <%- data2 %>;
+var region = <%- region %>;
+function changeDataGraph(newData, candidate) {
+	// activeChart.datasets[candidate].points.length
+	activeChart.scale.xLabels.length
+	for (var i = activeChart.scale.xLabels.length - 1; i >= 0; i--) {
+		activeChart.datasets[candidate].points[i].value = newData[i]
+	}
+	activeChart.update()
+};
+
+function getGtrendsRegion(name, candidat, day) {
+	return region[0][name]['gtrends'][candidat][day]/100
+}
+
+function updateOpacity(candidat, day) {
+	//region[0]['gtrends_alsace_per_day.json']['gtrends']['JLM'][1]
+	$(document).ready(() => {
+		$('#carteWeek').find('#Alsace').css('opacity', getGtrendsRegion('gtrends_alsace_per_day.json', candidat, day));
+		$('#carteWeek').find('#Loraine').css('opacity', getGtrendsRegion('gtrends_lorraine_per_day.json', candidat, day));
+		$('#carteWeek').find('#Nord').css('opacity', getGtrendsRegion('gtrends_nordpasdecalais_per_day.json', candidat, day));
+		$('#carteWeek').find('#Champagne').css('opacity', getGtrendsRegion('gtrends_champagneardenne_per_day.json', candidat, day));
+		$('#carteWeek').find('#Picardie').css('opacity', getGtrendsRegion('gtrends_picardy_per_day.json', candidat, day));
+		$('#carteWeek').find('#Bourgogne').css('opacity', getGtrendsRegion('gtrends_burgundy_per_day.json', candidat, day));
+		$('#carteWeek').find('#Franche').css('opacity', getGtrendsRegion('gtrends_franchecomte_per_day.json', candidat, day));
+		$('#carteWeek').find('#RhoneAlpes').css('opacity', getGtrendsRegion('gtrends_rhonealpes_per_day.json', candidat, day));
+		$('#carteWeek').find('#Auvergne').css('opacity', getGtrendsRegion('gtrends_auvergne_per_day.json', candidat, day));
+		$('#carteWeek').find('#Languedoc').css('opacity', getGtrendsRegion('gtrends_languedocroussillon_per_day.json', candidat, day));
+		$('#carteWeek').find('#PACA').css('opacity', getGtrendsRegion('gtrends_provence_per_day.json', candidat, day));
+		$('#carteWeek').find('#Haute_Normandie').css('opacity', getGtrendsRegion('gtrends_uppernormandy_per_day.json', candidat, day));
+		$('#carteWeek').find('#Basse_Normandie').css('opacity', getGtrendsRegion('gtrends_lowernormandy_per_day.json', candidat, day));
+		$('#carteWeek').find('#Centre').css('opacity', getGtrendsRegion('gtrends_centrevaldeloire_per_day.json', candidat, day));
+		$('#carteWeek').find('#PDL').css('opacity', getGtrendsRegion('gtrends_paysdelaloire_per_day.json', candidat, day));
+		$('#carteWeek').find('#IDF').css('opacity', getGtrendsRegion('gtrends_iledefrance_per_day.json', candidat, day));
+		$('#carteWeek').find('#Bretagne').css('opacity', getGtrendsRegion('gtrends_brittany_per_day.json', candidat, day));
+		$('#carteWeek').find('#Limousin').css('opacity', getGtrendsRegion('gtrends_limousin_per_day.json', candidat, day));
+		$('#carteWeek').find('#Corse').css('opacity', getGtrendsRegion('gtrends_corsica_per_day.json', candidat, day));
+		$('#carteWeek').find('#Poitou').css('opacity', getGtrendsRegion('gtrends_poitoucharentes_per_day.json', candidat, day));
+		$('#carteWeek').find('#Aquitaine').css('opacity', getGtrendsRegion('gtrends_aquitaine_per_day.json', candidat, day));
+		$('#carteWeek').find('#Midi').css('opacity', getGtrendsRegion('gtrends_midipyrenees_per_day.json', candidat, day));
+	});
+};
+
+function updateOpacityToday(candidat, day) {
+	//region[0]['gtrends_alsace_per_day.json']['gtrends']['JLM'][1]
+	$(document).ready(() => {
+		$('#carteToday').find('#Alsace').css('opacity', getGtrendsRegion('gtrends_alsace_per_day.json', candidat, day));
+		$('#carteToday').find('#Loraine').css('opacity', getGtrendsRegion('gtrends_lorraine_per_day.json', candidat, day));
+		$('#carteToday').find('#Nord').css('opacity', getGtrendsRegion('gtrends_nordpasdecalais_per_day.json', candidat, day));
+		$('#carteToday').find('#Champagne').css('opacity', getGtrendsRegion('gtrends_champagneardenne_per_day.json', candidat, day));
+		$('#carteToday').find('#Picardie').css('opacity', getGtrendsRegion('gtrends_picardy_per_day.json', candidat, day));
+		$('#carteToday').find('#Bourgogne').css('opacity', getGtrendsRegion('gtrends_burgundy_per_day.json', candidat, day));
+		$('#carteToday').find('#Franche').css('opacity', getGtrendsRegion('gtrends_franchecomte_per_day.json', candidat, day));
+		$('#carteToday').find('#RhoneAlpes').css('opacity', getGtrendsRegion('gtrends_rhonealpes_per_day.json', candidat, day));
+		$('#carteToday').find('#Auvergne').css('opacity', getGtrendsRegion('gtrends_auvergne_per_day.json', candidat, day));
+		$('#carteToday').find('#Languedoc').css('opacity', getGtrendsRegion('gtrends_languedocroussillon_per_day.json', candidat, day));
+		$('#carteToday').find('#PACA').css('opacity', getGtrendsRegion('gtrends_provence_per_day.json', candidat, day));
+		$('#carteToday').find('#Haute_Normandie').css('opacity', getGtrendsRegion('gtrends_uppernormandy_per_day.json', candidat, day));
+		$('#carteToday').find('#Basse_Normandie').css('opacity', getGtrendsRegion('gtrends_lowernormandy_per_day.json', candidat, day));
+		$('#carteToday').find('#Centre').css('opacity', getGtrendsRegion('gtrends_centrevaldeloire_per_day.json', candidat, day));
+		$('#carteToday').find('#PDL').css('opacity', getGtrendsRegion('gtrends_paysdelaloire_per_day.json', candidat, day));
+		$('#carteToday').find('#IDF').css('opacity', getGtrendsRegion('gtrends_iledefrance_per_day.json', candidat, day));
+		$('#carteToday').find('#Bretagne').css('opacity', getGtrendsRegion('gtrends_brittany_per_day.json', candidat, day));
+		$('#carteToday').find('#Limousin').css('opacity', getGtrendsRegion('gtrends_limousin_per_day.json', candidat, day));
+		$('#carteToday').find('#Corse').css('opacity', getGtrendsRegion('gtrends_corsica_per_day.json', candidat, day));
+		$('#carteToday').find('#Poitou').css('opacity', getGtrendsRegion('gtrends_poitoucharentes_per_day.json', candidat, day));
+		$('#carteToday').find('#Aquitaine').css('opacity', getGtrendsRegion('gtrends_aquitaine_per_day.json', candidat, day));
+		$('#carteToday').find('#Midi').css('opacity', getGtrendsRegion('gtrends_midipyrenees_per_day.json', candidat, day));
+	});
+};
+
+updateOpacity('JLM', 1);
+updateOpacityToday('JLM', 2);
+
+
+
+
 </script>
