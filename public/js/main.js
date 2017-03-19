@@ -1,8 +1,42 @@
+var mapdayi = 1;
+var mapdayj = 1;
+
+function CleanMap(toclean) {
+	toclean = false;
+	setTimeout(() => {
+
+		function a(carte) {
+			$(carte).find('#Alsace').css('opacity', 1);
+			$(carte).find('#Loraine').css('opacity', 1);
+			$(carte).find('#Nord').css('opacity', 1);
+			$(carte).find('#Champagne').css('opacity', 1);
+			$(carte).find('#Picardie').css('opacity', 1);
+			$(carte).find('#Bourgogne').css('opacity', 1);
+			$(carte).find('#Franche').css('opacity', 1);
+			$(carte).find('#RhoneAlpes').css('opacity', 1);
+			$(carte).find('#Auvergne').css('opacity', 1);
+			$(carte).find('#Languedoc').css('opacity', 1);
+			$(carte).find('#PACA').css('opacity', 1);
+			$(carte).find('#Haute_Normandie').css('opacity', 1);
+			$(carte).find('#Basse_Normandie').css('opacity', 1);
+			$(carte).find('#Centre').css('opacity', 1);
+			$(carte).find('#PDL').css('opacity', 1);
+			$(carte).find('#IDF').css('opacity', 1);
+			$(carte).find('#Bretagne').css('opacity', 1);
+			$(carte).find('#Limousin').css('opacity', 1);
+			$(carte).find('#Corse').css('opacity', 1);
+			$(carte).find('#Poitou').css('opacity', 1);
+			$(carte).find('#Aquitaine').css('opacity', 1);
+			$(carte).find('#Midi').css('opacity', 1);
+		};
+		['#carteToday', '#carteWeek'].map(e => a(e));	
+	}, 10);
+};
+
 $(document).ready(function() {
 
 	var slider = document.getElementById('timeline');
 	var time = slider.value+'%';
-
 
 	$('#timeline').change(function() {
 		$('#velo').css('left', time);
@@ -66,7 +100,8 @@ $(document).ready(function() {
 		opCorse = getRandom();
 	}
 
-	function regOpacityChange() {
+	function regOpacityChange(toclean) {
+		toclean = false;
 		$('#carteWeek').find('#Alsace').css('opacity', opAlsace);
 		$('#carteWeek').find('#Loraine').css('opacity', opLoraine);
 		$('#carteWeek').find('#Nord').css('opacity', opNord);
@@ -107,30 +142,63 @@ $(document).ready(function() {
 		$('#carteToday').find('#CorseToday').css('opacity', opCorse);
 	}
 
-	$('#carteToday').find('.region').addClass('melanchon');
-	$('#carteWeek').find('.region').addClass('melanchon');
-	$('.color').addClass('melanchon');
+	$('#carteToday').find('.region').addClass('melenchon');
+	$('#carteWeek').find('.region').addClass('melenchon');
+	$('.color').addClass('melenchon');
+
+	function updateMap() {
+		var toclean = false;
+		var candidat = $('nav').find('.selected')[0];
+		if (candidat == undefined) {
+			CleanMap(toclean);
+		}
+		else {
+			candidat = candidat.id;
+			if (candidat == 'lepen') {
+				updateOpacityToday('MLP', mapdayi);
+				updateOpacity('MLP', mapdayj);
+			}
+			if (candidat == 'macron') {
+				updateOpacityToday('MAC', mapdayi);
+				updateOpacity('MAC', mapdayj);
+			}
+			if (candidat == 'melenchon') {
+				updateOpacityToday('JLM', mapdayi);
+				updateOpacity('JLM', mapdayj);
+			}
+			if (candidat == 'fillon') {
+				updateOpacityToday('FIL', mapdayi);
+				updateOpacity('FIL', mapdayj);
+			}
+			if (candidat == 'hamon') {
+				updateOpacityToday('BHM', mapdayi);
+				updateOpacity('BHM', mapdayj);
+			}
+		}	
+	};
 
 	$('nav').find('.candidat').click(function() {
 		var candidatClass = this.id;
+		var toclean = false;
 		$('#carteToday').find('.region').removeClass('macron');
 		$('#carteToday').find('.region').removeClass('lepen');
 		$('#carteToday').find('.region').removeClass('fillon');
 		$('#carteToday').find('.region').removeClass('hamon');
-		$('#carteToday').find('.region').removeClass('melanchon');
+		$('#carteToday').find('.region').removeClass('melenchon');
 		$('#carteWeek').find('.region').removeClass('macron');
 		$('#carteWeek').find('.region').removeClass('lepen');
 		$('#carteWeek').find('.region').removeClass('fillon');
 		$('#carteWeek').find('.region').removeClass('hamon');
-		$('#carteWeek').find('.region').removeClass('melanchon');		
+		$('#carteWeek').find('.region').removeClass('melenchon');		
 		$('.color').removeClass('macron');
 		$('.color').removeClass('lepen');
 		$('.color').removeClass('fillon');
 		$('.color').removeClass('hamon');
-		$('.color').removeClass('melanchon');
+		$('.color').removeClass('melenchon');
 		
 		if($(this).hasClass('selected')) {	
 			$(this).removeClass('selected');
+			toclean = true;
 		} else {
 			$(this).addClass('selected');
 			$(".candidat").not($(this)).removeClass('selected');
@@ -141,24 +209,98 @@ $(document).ready(function() {
 			getRandomOpacity();
 			regOpacityChange();				
 		}
-			if(candidatClass === 'lepen') {
-				$('footer').find('.tete').css('background-image', 'url(PNG/lepenphoto.png)');
-			}
+		if(candidatClass === 'lepen') {
+			// $('footer').find('.tete').css('background-image', 'url(PNG/lepenphoto.png)');
+			$.find('#bigphoto')[0].setAttribute('src', 'img/lepen.png')
+			updateOpacityToday('MLP', mapdayi);
+			updateOpacity('MLP', mapdayj);
+			((toclean) ? CleanMap(toclean) : NaN);
+		}
 
-			if(candidatClass === 'macron') {
-				$('footer').find('.tete').css('background-image', 'url(PNG/macronphoto.png)');
-			}
+		if(candidatClass === 'macron') {
+			// $('footer').find('.tete').css('background-image', 'url(PNG/macronphoto.png)');
+			$.find('#bigphoto')[0].setAttribute('src', 'img/macron.png')
+			updateOpacityToday('MAC', mapdayi);
+			updateOpacity('MAC', mapdayj);
+			((toclean) ? CleanMap(toclean) : NaN);
+		}
 
-			if(candidatClass === 'fillon') {
-				$('footer').find('.tete').css('background-image', 'url(PNG/fillonphoto.png)');
-			}
+		if(candidatClass === 'fillon') {
+			// $('footer').find('.tete').css('background-image', 'url(PNG/fillonphoto.png)');
+			$.find('#bigphoto')[0].setAttribute('src', 'img/fillon.png')
+			updateOpacityToday('FIL', mapdayi);
+			updateOpacity('FIL', mapdayj);
+			((toclean) ? CleanMap(toclean) : NaN);
+		}
 
-			if(candidatClass === 'hamon') {
-				$('footer').find('.tete').css('background-image', 'url(PNG/hamonphoto.png)');
-			}
+		if(candidatClass === 'hamon') {
+			// $('footer').find('.tete').css('background-image', 'url(PNG/hamonphoto.png)');
+			$.find('#bigphoto')[0].setAttribute('src', 'img/hamon.png')	
+			updateOpacityToday('BHM', mapdayi);
+			updateOpacity('BHM', mapdayj);
+			((toclean) ? CleanMap(toclean) : NaN);
+		}
 
-			if(candidatClass === 'melanchon') {
-				$('footer').find('.tete').css('background-image', 'url(PNG/melanchonphoto.png)');
-			}
+		if(candidatClass === 'melenchon') {
+			// $('footer').find('.tete').css('background-image', 'url(PNG/melanchonphoto.png)');
+			$.find('#bigphoto')[0].setAttribute('src', 'img/melanchon.png')
+			updateOpacityToday('JLM', mapdayi);
+			updateOpacity('JLM', mapdayj);
+			((toclean) ? CleanMap(toclean) : NaN);
+		}
 	});
+
+	$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+	$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+
+	function getDate(jour) {
+		var listJour = ['Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.', 'Lun.', 'Mar.'];
+		// 1er jour = 1 février: mercredi
+		// console.log(jour)
+		return (listJour[(jour-1) % 7]).toString() + ' ' + (((jour-1)%28)+1).toString() + ' ' + ((jour < 29) ? 'février.' : 'mars').toString();
+
+	}
+
+	$('body').find('#mapday1+').click(() => {
+		/*
+		 *
+		 */
+		((mapdayi <= 48) ? mapdayi++ : NaN);
+		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+		updateMap();
+
+	});
+
+	$('body').find('#mapday1-').click(() => {
+		/*
+		 *
+		 */
+		((mapdayi > 1) ? mapdayi-- : NaN);
+		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+		updateMap();
+
+	});
+
+	$('body').find('#mapday2+').click(() => {
+		/*
+		 *
+		 */
+		((mapdayj <= 48) ? mapdayj++ : NaN);
+		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+		updateMap();
+
+	});
+
+	$('body').find('#mapday2-').click(() => {
+		/*
+		 *
+		 */
+		((mapdayj > 1) ? mapdayj-- : NaN);
+		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+		updateMap();
+
+	});
+
+	updateMap();
+	changeDataGraph(data2[0]['tweet']['JLM'], 0)
 });

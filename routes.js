@@ -90,7 +90,7 @@ for (var i = listRegion.length - 1; i >= 0; i--) {
   gtrends[0][listRegion[i]] = {};
   console.log(gtrends)
   JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'FIL', 'gtrends', 'Fillon');
-  JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'BNH', 'gtrends', 'BNH');
+  JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'BHM', 'gtrends', 'BHM');
   JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'MLP', 'gtrends', 'MLP');
   JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'JLM', 'gtrends', 'JLM');
   JsontoArrRegion('./json/GTrends/'+listRegion[i], gtrends[0][listRegion[i]], 'MAC', 'gtrends', 'Macron');

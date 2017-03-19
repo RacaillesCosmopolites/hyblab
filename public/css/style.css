@@ -238,6 +238,9 @@ header p  {
 		$MAP
 \*------------------------------------*/
 
+#Background {
+	fill: #fff;
+}
 
 .region {
 	-webkit-transition: 0.2s ease-out;
@@ -248,24 +251,29 @@ header p  {
 }
 
 
+.region.melanchon {
+	fill:#F24472;
+}
+
+.region.melenchon {
+	/* Parce que on sait pas écrire son nom de la même façon... */
+	fill:#F24472;
+}
+
 .region.macron {
-	fill:green;
-}
-
-.region.lepen {
-	fill:blue;
-}
-
-.region.fillon {
-	fill:red;
+	fill:#52378C;
 }
 
 .region.hamon {
-	fill:pink;
+	fill:#15BFBF;
 }
 
-.region.melanchon {
-	fill:grey;
+.region.fillon {
+	fill:#0806ff;
+}
+
+.region.lepen {
+	fill:#f20f05;
 }
 
 .maps {
