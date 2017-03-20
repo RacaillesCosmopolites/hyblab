@@ -51,6 +51,15 @@ function changeDataGraph(newData, candidate) {
 	activeChart.update()
 };
 
+function cleanDataGraph(candidate) {
+	// activeChart.datasets[candidate].points.length
+	activeChart.scale.xLabels.length
+	for (var i = activeChart.scale.xLabels.length - 1; i >= 0; i--) {
+		activeChart.datasets[candidate].points[i].value = 0;
+	}
+	activeChart.update()
+};
+
 function getGtrendsRegion(name, candidat, day) {
 	return region[0][name]['gtrends'][candidat][day]/100
 }

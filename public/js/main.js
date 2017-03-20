@@ -35,6 +35,8 @@ function CleanMap(toclean) {
 
 $(document).ready(function() {
 
+	var pos = 0;
+
 	var slider = document.getElementById('timeline');
 	var time = slider.value+'%';
 
@@ -214,78 +216,143 @@ $(document).ready(function() {
 	$('nav').find('.candidat').click(function() {
 		var candidatClass = this.id;
 		var toclean = false;
-		$('#carteToday').find('.region').removeClass('macron');
-		$('#carteToday').find('.region').removeClass('lepen');
-		$('#carteToday').find('.region').removeClass('fillon');
-		$('#carteToday').find('.region').removeClass('hamon');
-		$('#carteToday').find('.region').removeClass('melenchon');
-		$('#carteWeek').find('.region').removeClass('macron');
-		$('#carteWeek').find('.region').removeClass('lepen');
-		$('#carteWeek').find('.region').removeClass('fillon');
-		$('#carteWeek').find('.region').removeClass('hamon');
-		$('#carteWeek').find('.region').removeClass('melenchon');		
-		$('.color').removeClass('macron');
-		$('.color').removeClass('lepen');
-		$('.color').removeClass('fillon');
-		$('.color').removeClass('hamon');
-		$('.color').removeClass('melenchon');
-		
-		if($(this).hasClass('selected')) {	
-			$(this).removeClass('selected');
-			toclean = true;
-		} else {
-			$(this).addClass('selected');
-			$(".candidat").not($(this)).removeClass('selected');
-			$('#carteToday').find('.region').addClass(candidatClass);
-			$('#carteWeek').find('.region').addClass(candidatClass);
-			$('.color').addClass(candidatClass);
-			getRandom();
-			getRandomOpacity();
-			regOpacityChange();				
-		}
-		if(candidatClass === 'lepen') {
-			// $('footer').find('.tete').css('background-image', 'url(PNG/lepenphoto.png)');
-			$.find('#bigphoto')[0].setAttribute('src', 'img/lepen.png')
-			updateOpacityToday('MLP', mapdayi);
-			updateOpacity('MLP', mapdayj);
-			setCandidate('lepen');
-			((toclean) ? CleanMap(toclean) : NaN);
-		}
+		if(pos == 0) {
+			// Si on est à l'état des cartes
+			$('#carteToday').find('.region').removeClass('macron');
+			$('#carteToday').find('.region').removeClass('lepen');
+			$('#carteToday').find('.region').removeClass('fillon');
+			$('#carteToday').find('.region').removeClass('hamon');
+			$('#carteToday').find('.region').removeClass('melenchon');
+			$('#carteWeek').find('.region').removeClass('macron');
+			$('#carteWeek').find('.region').removeClass('lepen');
+			$('#carteWeek').find('.region').removeClass('fillon');
+			$('#carteWeek').find('.region').removeClass('hamon');
+			$('#carteWeek').find('.region').removeClass('melenchon');		
+			$('.color').removeClass('macron');
+			$('.color').removeClass('lepen');
+			$('.color').removeClass('fillon');
+			$('.color').removeClass('hamon');
+			$('.color').removeClass('melenchon');
+			cleanDataGraph(0);
+			cleanDataGraph(1);
+			cleanDataGraph(2);
+			cleanDataGraph(3);
+			cleanDataGraph(4);
+			if($(this).hasClass('selected')) {	
+				$(this).removeClass('selected');
+				toclean = true;
+			} else {
+				$(this).addClass('selected');
+				$(".candidat").not($(this)).removeClass('selected');
+				$('#carteToday').find('.region').addClass(candidatClass);
+				$('#carteWeek').find('.region').addClass(candidatClass);
+				$('.color').addClass(candidatClass);
+				getRandom();
+				getRandomOpacity();
+				regOpacityChange();				
+			}
+			if(candidatClass === 'lepen') {
+				// $('footer').find('.tete').css('background-image', 'url(PNG/lepenphoto.png)');
+				$.find('#bigphoto')[0].setAttribute('src', 'img/lepen.png')
+				updateOpacityToday('MLP', mapdayi);
+				updateOpacity('MLP', mapdayj);
+				setCandidate('lepen');
+				((toclean) ? CleanMap(toclean) : NaN);
+				changeDataGraph(data2[0]['tweet']['MLP'], 4);
+				((toclean) ? cleanDataGraph(4) : NaN);
+			}
 
-		if(candidatClass === 'macron') {
-			// $('footer').find('.tete').css('background-image', 'url(PNG/macronphoto.png)');
-			$.find('#bigphoto')[0].setAttribute('src', 'img/macron.png')
-			updateOpacityToday('MAC', mapdayi);
-			updateOpacity('MAC', mapdayj);
-			setCandidate('macron');
-			((toclean) ? CleanMap(toclean) : NaN);
-		}
+			if(candidatClass === 'macron') {
+				// $('footer').find('.tete').css('background-image', 'url(PNG/macronphoto.png)');
+				$.find('#bigphoto')[0].setAttribute('src', 'img/macron.png')
+				updateOpacityToday('MAC', mapdayi);
+				updateOpacity('MAC', mapdayj);
+				setCandidate('macron');
+				((toclean) ? CleanMap(toclean) : NaN);
+				changeDataGraph(data2[0]['tweet']['MLP'], 1);
+				((toclean) ? cleanDataGraph(1) : NaN);
+			}
 
-		if(candidatClass === 'fillon') {
-			// $('footer').find('.tete').css('background-image', 'url(PNG/fillonphoto.png)');
-			$.find('#bigphoto')[0].setAttribute('src', 'img/fillon.png')
-			updateOpacityToday('FIL', mapdayi);
-			updateOpacity('FIL', mapdayj);
-			setCandidate('fillon');
-			((toclean) ? CleanMap(toclean) : NaN);
-		}
+			if(candidatClass === 'fillon') {
+				// $('footer').find('.tete').css('background-image', 'url(PNG/fillonphoto.png)');
+				$.find('#bigphoto')[0].setAttribute('src', 'img/fillon.png')
+				updateOpacityToday('FIL', mapdayi);
+				updateOpacity('FIL', mapdayj);
+				setCandidate('fillon');
+				((toclean) ? CleanMap(toclean) : NaN);
+				changeDataGraph(data2[0]['tweet']['MLP'], 3);
+				((toclean) ? cleanDataGraph(3) : NaN);
+			}
 
-		if(candidatClass === 'hamon') {
-			// $('footer').find('.tete').css('background-image', 'url(PNG/hamonphoto.png)');
-			$.find('#bigphoto')[0].setAttribute('src', 'img/hamon.png')	
-			updateOpacityToday('BHM', mapdayi);
-			updateOpacity('BHM', mapdayj);
-			setCandidate('hamon');
-			((toclean) ? CleanMap(toclean) : NaN);
-		}
+			if(candidatClass === 'hamon') {
+				// $('footer').find('.tete').css('background-image', 'url(PNG/hamonphoto.png)');
+				$.find('#bigphoto')[0].setAttribute('src', 'img/hamon.png')	
+				updateOpacityToday('BHM', mapdayi);
+				updateOpacity('BHM', mapdayj);
+				setCandidate('hamon');
+				((toclean) ? CleanMap(toclean) : NaN);
+				changeDataGraph(data2[0]['tweet']['MLP'], 2);
+				((toclean) ? cleanDataGraph(2) : NaN);
+			}
 
-		if(candidatClass === 'melenchon') {
-			// $('footer').find('.tete').css('background-image', 'url(PNG/melanchonphoto.png)');
-			$.find('#bigphoto')[0].setAttribute('src', 'img/melanchon.png')
-			updateOpacityToday('JLM', mapdayi);
-			updateOpacity('JLM', mapdayj);
-			setCandidate('melenchon');
-			((toclean) ? CleanMap(toclean) : NaN);
+			if(candidatClass === 'melenchon') {
+				// $('footer').find('.tete').css('background-image', 'url(PNG/melanchonphoto.png)');
+				$.find('#bigphoto')[0].setAttribute('src', 'img/melanchon.png')
+				updateOpacityToday('JLM', mapdayi);
+				updateOpacity('JLM', mapdayj);
+				setCandidate('melenchon');
+				((toclean) ? CleanMap(toclean) : NaN);
+				changeDataGraph(data2[0]['tweet']['MLP'], 0);
+				((toclean) ? cleanDataGraph(0) : NaN);
+			}
+		}
+		if (pos == 1) {
+			if($(this).hasClass('selected')) {	
+				NaN;
+			} else {
+				if ($(this).hasClass('selecttwo')) {
+					$(this).removeClass('selecttwo');
+					if(candidatClass === 'lepen') {
+						cleanDataGraph(4);
+					}
+					if(candidatClass === 'macron') {
+						cleanDataGraph(1);
+					}
+
+					if(candidatClass === 'fillon') {
+						cleanDataGraph(3);
+					}
+
+					if(candidatClass === 'hamon') {
+						cleanDataGraph(2);
+					}
+
+					if(candidatClass === 'melenchon') {
+						cleanDataGraph(0);
+					}
+				}
+				else {
+					$(this).addClass('selecttwo');
+					if(candidatClass === 'lepen') {
+						changeDataGraph(data2[0]['tweet']['MLP'], 4)
+					}
+					if(candidatClass === 'macron') {
+						changeDataGraph(data2[0]['tweet']['MAC'], 1)
+					}
+
+					if(candidatClass === 'fillon') {
+						changeDataGraph(data2[0]['tweet']['FIL'], 3)
+					}
+
+					if(candidatClass === 'hamon') {
+						changeDataGraph(data2[0]['tweet']['BNH'], 2)
+					}
+
+					if(candidatClass === 'melenchon') {
+						changeDataGraph(data2[0]['tweet']['JLM'], 0)
+					}
+				}
+			};
 		}
 	});
 
@@ -339,8 +406,27 @@ $(document).ready(function() {
 		updateMap();
 
 	});
+	document.addEventListener('scroll', function (event) {
+		/*
+		 *
+		 */
+		if ($('body').scrollTop() >= 1240) {
+		 	pos = 1;
+		 	$('#conseil').show()
+
+		}
+		else {
+			pos = 0;
+			$('#conseil').hide()
+			$('.selecttwo').removeClass('selecttwo');
+		}
+	}, true /*Capture event*/);
 
 	updateMap();
 	setCandidate('melenchon');
 	changeDataGraph(data2[0]['tweet']['JLM'], 0)
+
+
+
+	// border: 3px #fff solid;
 });

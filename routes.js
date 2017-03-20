@@ -163,17 +163,17 @@ var data = {
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
-    fillColor : 'rgba(242, 230, 53, 0.4)',
-    strokeColor : "rgba(242, 230, 53, 0.8)",
-    pointColor : "rgba(242, 230, 53, 1)",
-    pointStrokeColor : "rgba(245, 235, 93, 1)",
+    fillColor : 'rgba(8, 6, 255, 0.4)',
+    strokeColor : "rgba(8, 6, 255, 0.8)",
+    pointColor : "rgba(8, 6, 255, 1)",
+    pointStrokeColor : "rgba(15, 12, 255, 1)",
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
-    fillColor : 'rgba(242, 129, 29, 0.4)',
-    strokeColor : "rgba(242, 129, 29, 0.8)",
-    pointColor : "rgba(242, 129, 29, 1)",
-    pointStrokeColor : "rgba(245, 154, 74, 0.8)",
+    fillColor : 'rgba(242, 15, 5, 0.4)',
+    strokeColor : "rgba(242, 15, 5, 0.8)",
+    pointColor : "rgba(242, 15, 5, 1)",
+    pointStrokeColor : "rgba(242, 25, 15, 0.8)",
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     }
     ]
