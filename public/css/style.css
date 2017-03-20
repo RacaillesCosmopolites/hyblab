@@ -417,6 +417,7 @@ header p  {
 
 .container.graph .chart {
 	position:absolute;
+    height: 90%;
 	bottom:0;
 	right:0;
 	margin:2em;
@@ -426,9 +427,10 @@ header p  {
 	width:100%;
 	height:4vh;
 	position:absolute;
-	bottom:-2vh;
+	/*bottom:-2vh;*/
 	border-top:2px white solid;
 	border-bottom:2px white solid;
+    bottom: -3.2em;
 }
 
 .container.graph .timeline-graph div {

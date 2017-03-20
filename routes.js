@@ -181,6 +181,7 @@ var data = {
 
     var options = {
       responsive: true,
+      maintainAspectRatio: false,
       scaleShowGridLines : false,
       datasetStrokeWidth : 1,
       pointDotStrokeWidth : 1,
