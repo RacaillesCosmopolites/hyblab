@@ -3,6 +3,52 @@ var mapdayj = 1;
 var listSelected = [0,0,0,0,0];
 var dataview = 'RT';
 
+var candidatToInt = {
+	lepen: 4,
+	macron: 1,
+	fillon: 3,
+	hamon: 2,
+	melenchon: 0
+}
+
+var intToCandidat = {
+	0: 'melenchon',
+	1: 'macron',
+	2: 'hamon',
+	3: 'fillon',
+	4: 'lepen'
+}
+
+var villeCandidat = [[], [], [], [], []];
+var trajetCandidat = [[], [], [], [], []];
+var trajetSVGCandidat = [[], [], [], [], []];
+
+villeCandidat[candidatToInt['hamon']] = ["Blois", "Arras", "Brest", "Reims", "Marseille", "Le-Havre", "Nice", "Paris"];
+trajetCandidat[candidatToInt['hamon']] = [21, 23, 29, 32, 36, 38, 43, 47];
+trajetSVGCandidat[candidatToInt['hamon']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+
+
+villeCandidat[candidatToInt['fillon']] = ["Paris", "Nimes", "Paris", "Paris", "Orleans", "Besancon", "Caen"];
+trajetCandidat[candidatToInt['fillon']] = [24, 30, 32, 33, 35, 37, 44];
+trajetSVGCandidat[candidatToInt['fillon']] = ['fillon1','fillon2','fillon3','fillon4','fillon5', 'fillon6', 'fillon7'];
+
+
+villeCandidat[candidatToInt['lepen']] = ["Lyon", "Nantes", "Châteauroux", "Metz"];
+trajetCandidat[candidatToInt['lepen']] = [5, 26, 39, 46];
+trajetSVGCandidat[candidatToInt['lepen']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+
+
+villeCandidat[candidatToInt['macron']] = ["Lyon", "Toulon", "Londres", "Rocamadour", "Angers", "Paris", "Caen", "Talence"];//, "Dijon"]
+trajetCandidat[candidatToInt['macron']] = [5, 18, 21, 24, 28, 30, 32, 37];//51];
+trajetSVGCandidat[candidatToInt['macron']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+
+
+villeCandidat[candidatToInt['melenchon']] = ["Lyon", "Strasbourg"];//, "Paris", "Rennes", "Le Havre"];
+trajetCandidat[candidatToInt['melenchon']] = [5, 15]; //46, ]
+trajetSVGCandidat[candidatToInt['melenchon']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+
+
+
 function CleanMap(toclean) {
 	toclean = false;
 	setTimeout(() => {
@@ -37,7 +83,7 @@ function CleanMap(toclean) {
 
 $(document).ready(function() {
 
-	var pos = 0;
+	var pos = 0; // Position in the page
 
 	var slider = document.getElementById('timeline');
 	var time = slider.value+'%';
@@ -54,101 +100,32 @@ $(document).ready(function() {
 		console.log(time);
 	});
 
-	getRandom();
-	getRandomOpacity();
-	regOpacityChange();
-
-	function getRandom() {
-  		return Math.random();
+	function cleanVille() {
+		$('body').find('.city').hide();
+		trajetSVGCandidat.map(e => e.map(s => $('body').find('#'+s).hide()));
 	}
 
-	var opAlsace = getRandom();
-	var opLoraine = getRandom();
-	var opNord = getRandom();
-	var opChampagne = getRandom();
-	var opPicardie = getRandom();
-	var opBourgogne = getRandom();
-	var opFranche = getRandom();
-	var opRhoneAlpes = getRandom();
-	var opAuvergne = getRandom();
-	var opLanguedoc = getRandom();
-	var opPACA = getRandom();
-	var opHaute_Normandie = getRandom();
-	var opBasse_Normandie = getRandom();
-	var opCentre = getRandom();
-	var opPDL = getRandom();
-	var opIDF = getRandom();
-	var opBretagne = getRandom();
-	var opLimousin = getRandom();
-	var opCorse = getRandom();
-
-	function getRandomOpacity()  {
-		opAlsace = getRandom();
-		opLoraine = getRandom();
-		opNord = getRandom();
-		opChampagne = getRandom();
-		opPicardie = getRandom();
-		opBourgogne = getRandom();
-		opFranche = getRandom();
-		opRhoneAlpes = getRandom();
-		opAuvergne = getRandom();
-		opLanguedoc = getRandom();
-		opPACA = getRandom();
-		opHaute_Normandie = getRandom();
-		opBasse_Normandie = getRandom();
-		opCentre = getRandom();
-		opPDL = getRandom();
-		opIDF = getRandom();
-		opBretagne = getRandom();
-		opLimousin = getRandom();
-		opCorse = getRandom();
-	}
-
-	function regOpacityChange(toclean) {
-		toclean = false;
-		$('#carteWeek').find('#Alsace').css('opacity', opAlsace);
-		$('#carteWeek').find('#Loraine').css('opacity', opLoraine);
-		$('#carteWeek').find('#Nord').css('opacity', opNord);
-		$('#carteWeek').find('#Champagne').css('opacity', opChampagne);
-		$('#carteWeek').find('#Picardie').css('opacity', opPicardie);
-		$('#carteWeek').find('#Bourgogne').css('opacity', opBourgogne);
-		$('#carteWeek').find('#Franche').css('opacity', opFranche);
-		$('#carteWeek').find('#RhoneAlpes').css('opacity', opRhoneAlpes);
-		$('#carteWeek').find('#Auvergne').css('opacity', opAuvergne);
-		$('#carteWeek').find('#Languedoc').css('opacity', opLanguedoc);
-		$('#carteWeek').find('#PACA').css('opacity', opPACA);
-		$('#carteWeek').find('#Haute_Normandie').css('opacity', opHaute_Normandie);
-		$('#carteWeek').find('#Basse_Normandie').css('opacity', opBasse_Normandie);
-		$('#carteWeek').find('#Centre').css('opacity', opCentre);
-		$('#carteWeek').find('#PDL').css('opacity', opPDL);
-		$('#carteWeek').find('#IDF').css('opacity', opIDF);
-		$('#carteWeek').find('#Bretagne').css('opacity', opBretagne);
-		$('#carteWeek').find('#Limousin').css('opacity', opLimousin);
-		$('#carteWeek').find('#Corse').css('opacity', opCorse);
-		$('#carteToday').find('#AlsaceToday').css('opacity', opAlsace);
-		$('#carteToday').find('#LoraineToday').css('opacity', opLoraine);
-		$('#carteToday').find('#NordToday').css('opacity', opNord);
-		$('#carteToday').find('#ChampagneToday').css('opacity', opChampagne);
-		$('#carteToday').find('#PicardieToday').css('opacity', opPicardie);
-		$('#carteToday').find('#BourgogneToday').css('opacity', opBourgogne);
-		$('#carteToday').find('#FrancheToday').css('opacity', opFranche);
-		$('#carteToday').find('#RhoneAlpesToday').css('opacity', opRhoneAlpes);
-		$('#carteToday').find('#AuvergneToday').css('opacity', opAuvergne);
-		$('#carteToday').find('#LanguedocToday').css('opacity', opLanguedoc);
-		$('#carteToday').find('#PACAToday').css('opacity', opPACA);
-		$('#carteToday').find('#Haute_NormandieToday').css('opacity', opHaute_Normandie);
-		$('#carteToday').find('#Basse_NormandieToday').css('opacity', opBasse_Normandie);
-		$('#carteToday').find('#CentreToday').css('opacity', opCentre);
-		$('#carteToday').find('#PDLToday').css('opacity', opPDL);
-		$('#carteToday').find('#IDFToday').css('opacity', opIDF);
-		$('#carteToday').find('#BretagneToday').css('opacity', opBretagne);
-		$('#carteToday').find('#LimousinToday').css('opacity', opLimousin);
-		$('#carteToday').find('#CorseToday').css('opacity', opCorse);
-	}
-
-	$('#carteToday').find('.region').addClass('melenchon');
-	$('#carteWeek').find('.region').addClass('melenchon');
-	$('.color').addClass('melenchon');
+	function afficherTrajet(candidat, date) {
+		cleanVille();
+		var j = 0;
+		for (var i = 0; i < date - 1; i++) {
+			$('body').find('#Paris').css('fill', 'red')
+			console.log('blblbl')
+			if (trajetCandidat[candidatToInt[candidat]][i] < date) {
+				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).show();
+				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).css('fill', 'red');
+				(j!=0 || villeCandidat[candidatToInt[candidat]][i] != "Paris") ? j = j+1 : NaN;
+			}
+			if (trajetCandidat[candidatToInt[candidat]][i] == date) {
+				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).show();
+				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).css('fill', 'orange');
+				(j!=0 || villeCandidat[candidatToInt[candidat]][i] != "Paris") ? j = j+1 : NaN;
+			}
+		}
+		for (var k = 0; k < j; k++) {
+			$('body').find('#'+trajetSVGCandidat[candidatToInt[candidat]][k]).show();
+		}
+	};
 
 	function updateMap() {
 		var toclean = false;
@@ -250,9 +227,6 @@ $(document).ready(function() {
 				$('#carteToday').find('.region').addClass(candidatClass);
 				$('#carteWeek').find('.region').addClass(candidatClass);
 				$('.color').addClass(candidatClass);
-				getRandom();
-				getRandomOpacity();
-				regOpacityChange();				
 			}
 			if(candidatClass === 'lepen') {
 				// $('footer').find('.tete').css('background-image', 'url(PNG/lepenphoto.png)');
@@ -263,6 +237,7 @@ $(document).ready(function() {
 				((toclean) ? CleanMap(toclean) : NaN);
 				changeDataGraph(data2[0][dataview]['MLP'], 4);
 				((toclean) ? cleanDataGraph(4) : NaN);
+				afficherTrajet('lepen', mapdayi);
 
 			}
 
@@ -275,6 +250,7 @@ $(document).ready(function() {
 				((toclean) ? CleanMap(toclean) : NaN);
 				changeDataGraph(data2[0][dataview]['MAC'], 1);
 				((toclean) ? cleanDataGraph(1) : NaN);
+				afficherTrajet('macron', mapdayi);
 			}
 
 			if(candidatClass === 'fillon') {
@@ -286,6 +262,7 @@ $(document).ready(function() {
 				((toclean) ? CleanMap(toclean) : NaN);
 				changeDataGraph(data2[0][dataview]['FIL'], 3);
 				((toclean) ? cleanDataGraph(3) : NaN);
+				afficherTrajet('fillon', mapdayi);
 			}
 
 			if(candidatClass === 'hamon') {
@@ -297,6 +274,7 @@ $(document).ready(function() {
 				((toclean) ? CleanMap(toclean) : NaN);
 				changeDataGraph(data2[0][dataview]['BNH'], 2);
 				((toclean) ? cleanDataGraph(2) : NaN);
+				afficherTrajet('hamon', mapdayi);
 			}
 
 			if(candidatClass === 'melenchon') {
@@ -308,6 +286,7 @@ $(document).ready(function() {
 				((toclean) ? CleanMap(toclean) : NaN);
 				changeDataGraph(data2[0][dataview]['JLM'], 0);
 				((toclean) ? cleanDataGraph(0) : NaN);
+				afficherTrajet('melenchon', mapdayi);
 			}
 		}
 		if (pos == 1) {
@@ -375,36 +354,27 @@ $(document).ready(function() {
 
 	function getDate(jour) {
 		var listJour = ['Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.', 'Lun.', 'Mar.'];
-		// 1er jour = 1 février: mercredi
-		// console.log(jour)
 		return (listJour[(jour-1) % 7]).toString() + ' ' + (((jour-1)%28)+1).toString() + ' ' + ((jour < 29) ? 'février.' : 'mars').toString();
 
 	}
 
 	$('body').find('#mapday1+').click(() => {
-		/*
-		 *
-		 */
 		((mapdayi <= 48) ? mapdayi++ : NaN);
 		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
 		updateMap();
+		afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
 
 	});
 
 	$('body').find('#mapday1-').click(() => {
-		/*
-		 *
-		 */
 		((mapdayi > 1) ? mapdayi-- : NaN);
 		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
 		updateMap();
+		afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
 
 	});
 
 	$('body').find('#mapday2+').click(() => {
-		/*
-		 *
-		 */
 		((mapdayj <= 48) ? mapdayj++ : NaN);
 		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
 		updateMap();
@@ -412,18 +382,12 @@ $(document).ready(function() {
 	});
 
 	$('body').find('#mapday2-').click(() => {
-		/*
-		 *
-		 */
 		((mapdayj > 1) ? mapdayj-- : NaN);
 		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
 		updateMap();
 
 	});
 	document.addEventListener('scroll', function (event) {
-		/*
-		 *
-		 */
 		if ($('body').scrollTop() >= 1240) {
 		 	pos = 1;
 		 	$('#conseil').show()
@@ -451,160 +415,19 @@ $(document).ready(function() {
 		}
 	}, true /*Capture event*/);
 
+
+	// Initialization
+
+	$('#carteToday').find('.region').addClass('melenchon');
+	$('#carteWeek').find('.region').addClass('melenchon');
+	$('.color').addClass('melenchon');
+
 	updateMap();
 	setCandidate('melenchon');
-	changeDataGraph(data2[0][dataview]['JLM'], 0)
+	changeDataGraph(data2[0][dataview]['JLM'], 0);
+	cleanVille();
 
 
 
 	// border: 3px #fff solid;
-});
-
-
-var tooltip = d3.selectAll(".tooltip:not(.css)");
-// var HTMLabsoluteTip = d3.select("div.tooltip.absolute");
-// var HTMLfixedTip = d3.select("div.tooltip.fixed");
-// var HTMLmouseTip = d3.select("div.tooltip.mouse");
-// var SVGexactTip = d3.select("g.tooltip.exact");
-// var SVGmouseTip = d3.select("g.tooltip.mouse");
-/* If this seems like a lot of different variables,
-   remember that normally you'd only implement one 
-   type of tooltip! */
-
-/* I'm using d3 to add the event handlers to the circles
-   and set positioning attributes on the tooltips, but
-   you could use JQuery or plain Javascript. */
-d3.select("svg").selectAll('.city')
-
-    /***** Easy but ugly tooltip *****/ 
-    .attr("title", "Automatic Title Tooltip") 
-
-    .on("mouseover", function () {
-        tooltip.style("opacity", "1");
-      
-        /* You'd normally set the tooltip text
-           here, based on data from the  element
-           being moused-over; I'm just setting colour. */
-        tooltip.style("color", this.getAttribute("fill") );
-      /* Note: SVG text is set in CSS to link fill colour to 
-         the "color" attribute. */
-      
-      
-        /***** Positioning a tooltip precisely
-               over an SVG element *****/ 
-        
-        /***** For an SVG tooltip *****/ 
-        
-        //"this" in the context of this function
-        //is the element that triggered this event handler
-        //which will be one of the circle elements.
-        // var tooltipParent = SVGexactTip.node().parentElement;
-        // var matrix = 
-        //         this.getTransformToElement(tooltipParent)
-        //             .translate(+this.getAttribute("cx"),
-        //                  +this.getAttribute("cy"));
-        
-        //getTransformToElement returns a matrix
-        //representing all translations, rotations, etc.
-        //to convert between two coordinate systems.
-        //The .translate(x,y) function adds an additional 
-        //translation to the centre of the circle.
-        
-        //the matrix has values a, b, c, d, e, and f
-        //we're only interested in e and f
-        //which represent the final horizontal and vertical
-        //translation between the top left of the svg and 
-        //the centre of the circle.
-        
-        //we get the position of the svg on the page
-        //using this.viewportElement to get the SVG
-        //and using offsetTop and offsetLeft to get the SVG's
-        //position relative to the page.
-        // SVGexactTip
-        //     .attr("transform", "translate(" + (matrix.e)
-        //               + "," + (matrix.f-20) + ")");
-        
-        /***** For an HTML tooltip *****/ 
-        
-        //for the HTML tooltip, we're not interested in a
-        //transformation relative to an internal SVG coordinate
-        //system, but relative to the page body
-        
-        //We can't get that matrix directly,
-        //but we can get the conversion to the
-        //screen coordinates.
-        
-        var matrix = this.getScreenCTM()
-                .translate(+this.getAttribute("cx"),
-                         +this.getAttribute("cy"));
-        
-        //You can use screen coordinates directly to position
-        //a fixed-position tooltip        
-        // HTMLfixedTip 
-        //     .style("left", 
-        //            (matrix.e) + "px")
-        //     .style("top",
-        //            (matrix.f + 3) + "px");
-        // //The limitation of fixed position is that it won't
-        // //change when scrolled.
-        
-        // //A better solution is to calculate the position 
-        // //of the page on the screen to position an 
-        // //absolute-positioned tooltip:
-        // HTMLabsoluteTip
-        //     .style("left", 
-        //            (window.pageXOffset + matrix.e) + "px")
-        //     .style("top",
-        //            (window.pageYOffset + matrix.f + 30) + "px");
-        
-    })
-    .on("mousemove", function () {
-        
-        /***** Positioning a tooltip using mouse coordinates *****/ 
-      
-        /* The code is shorter, but it runs every time
-           the mouse moves, so it could slow down other
-           processes or animation. */
-        
-        /***** For an SVG tooltip *****/ 
-       
-        // var mouseCoords = d3.mouse(
-        //     SVGmouseTip.node().parentElement);
-        // //the d3.mouse() function calculates the mouse
-        // //position relative to an SVG Element, in that 
-        // //element's coordinate system 
-        // //(after transform or viewBox attributes).
-        
-        // //Because we're using the coordinates to position
-        // //the SVG tooltip, we want the coordinates to be
-        // //with respect to that element's parent.
-        // //SVGmouseTip.node() accesses the (first and only)
-        // //selected element from the saved d3 selection object.
-        
-        // SVGmouseTip
-        //     .attr("transform", "translate("
-        //           + (mouseCoords[0]-10) + "," 
-        //           + (mouseCoords[1] - 10) + ")");
-        
-        // /***** For an HTML tooltip *****/ 
-      
-        // //mouse coordinates relative to the page as a whole
-        // //can be accessed directly from the click event object
-        // //(which d3 stores as d3.event)
-        // HTMLmouseTip
-        //     .style("left", Math.max(0, d3.event.pageX - 150) + "px")
-        //     .style("top", (d3.event.pageY + 20) + "px");
-    })
-    .on("mouseout", function () {
-        return tooltip.style("opacity", "0");
-    });
-
-var circleGroup = d3.select("g#circle-group");
-d3.select("button#wiggle").on("click", function() {
-    circleGroup.transition().duration(1000)
-        .attr("transform",
-              "rotate("+ (20*(Math.random()-0.5)) + ")"
-              +"translate(" + (20*(Math.random()-0.5)) +","
-              + (20*(Math.random()-0.5)) + ")"
-              );
 });
