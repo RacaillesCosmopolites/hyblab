@@ -1,6 +1,7 @@
 var mapdayi = 1;
 var mapdayj = 1;
 var listSelected = [0,0,0,0,0];
+var dataview = 'RT';
 
 function CleanMap(toclean) {
 	toclean = false;
@@ -259,7 +260,7 @@ $(document).ready(function() {
 				updateOpacity('MLP', mapdayj);
 				setCandidate('lepen');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0]['tweet']['MLP'], 4);
+				changeDataGraph(data2[0][dataview]['MLP'], 4);
 				((toclean) ? cleanDataGraph(4) : NaN);
 			}
 
@@ -270,7 +271,7 @@ $(document).ready(function() {
 				updateOpacity('MAC', mapdayj);
 				setCandidate('macron');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0]['tweet']['MLP'], 1);
+				changeDataGraph(data2[0][dataview]['MLP'], 1);
 				((toclean) ? cleanDataGraph(1) : NaN);
 			}
 
@@ -281,7 +282,7 @@ $(document).ready(function() {
 				updateOpacity('FIL', mapdayj);
 				setCandidate('fillon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0]['tweet']['MLP'], 3);
+				changeDataGraph(data2[0][dataview]['MLP'], 3);
 				((toclean) ? cleanDataGraph(3) : NaN);
 			}
 
@@ -292,7 +293,7 @@ $(document).ready(function() {
 				updateOpacity('BHM', mapdayj);
 				setCandidate('hamon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0]['tweet']['MLP'], 2);
+				changeDataGraph(data2[0][dataview]['MLP'], 2);
 				((toclean) ? cleanDataGraph(2) : NaN);
 			}
 
@@ -303,7 +304,7 @@ $(document).ready(function() {
 				updateOpacity('JLM', mapdayj);
 				setCandidate('melenchon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0]['tweet']['MLP'], 0);
+				changeDataGraph(data2[0][dataview]['MLP'], 0);
 				((toclean) ? cleanDataGraph(0) : NaN);
 			}
 		}
@@ -341,26 +342,26 @@ $(document).ready(function() {
 					$(this).addClass('selecttwo');
 					if(candidatClass === 'lepen') {
 						listSelected[4] = 1;
-						changeDataGraph(data2[0]['tweet']['MLP'], 4)
+						changeDataGraph(data2[0][dataview]['MLP'], 4)
 					}
 					if(candidatClass === 'macron') {
 						listSelected[1] = 1;
-						changeDataGraph(data2[0]['tweet']['MAC'], 1)
+						changeDataGraph(data2[0][dataview]['MAC'], 1)
 					}
 
 					if(candidatClass === 'fillon') {
 						listSelected[3] = 1;
-						changeDataGraph(data2[0]['tweet']['FIL'], 3)
+						changeDataGraph(data2[0][dataview]['FIL'], 3)
 					}
 
 					if(candidatClass === 'hamon') {
 						listSelected[2] = 1;
-						changeDataGraph(data2[0]['tweet']['BNH'], 2)
+						changeDataGraph(data2[0][dataview]['BNH'], 2)
 					}
 
 					if(candidatClass === 'melenchon') {
 						listSelected[0] = 1;
-						changeDataGraph(data2[0]['tweet']['JLM'], 0)
+						changeDataGraph(data2[0][dataview]['JLM'], 0)
 					}
 				}
 			};
@@ -450,7 +451,7 @@ $(document).ready(function() {
 
 	updateMap();
 	setCandidate('melenchon');
-	changeDataGraph(data2[0]['tweet']['JLM'], 0)
+	changeDataGraph(data2[0][dataview]['JLM'], 0)
 
 
 
