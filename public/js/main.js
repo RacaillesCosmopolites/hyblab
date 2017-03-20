@@ -177,6 +177,40 @@ $(document).ready(function() {
 		}	
 	};
 
+	var listCandidat = {
+		melenchon: [
+			'Jean-Luc Mélenchon',
+			'France Insoumise',
+			"Sous les couleurs de la coalition du Front de gauche, dont le PG fait partie, il est élu député européen dans la circonscription Sud-Ouest en 2009 et réélu en 2014. Il est candidat de cette coalition à l'élection présidentielle de 2012, où il arrive en quatrième position au premier tour, avec 11,1 % des voix. Il est candidat à l'élection présidentielle de 2017, « hors cadre de partis » et sans le Front de gauche, mais au nom du mouvement La France Insoumise (FI), qu'il fonde en février 2016."
+		],
+		lepen: [
+			'Marine Le Pen',
+			'Front National',
+			"Elle est élue présidente du Front national au congrès de Tours de janvier 2011, succédant ainsi à son père, Jean-Marie Le Pen, qui dirigeait le parti depuis sa fondation. Candidate à l'élection présidentielle de 2012, elle arrive en troisième position au premier tour en obtenant 17,90 % des suffrages exprimés, soit un meilleur résultat que tous ceux obtenus par son père au premier tour d'une élection présidentielle française."
+		],
+		macron: [
+			'Manu Macron',
+			'En marche !',
+			"Membre du Parti socialiste entre 2006 et 2009, il est nommé secrétaire général adjoint de la présidence de la République auprès de François Hollande en 2012 puis ministre de l'Économie, de l'Industrie et du Numérique en 2014 dans le gouvernement Manuel Valls II. \nEn avril 2016, il fonde le mouvement politique « En marche ! » puis démissionne de ses fonctions de ministre en août de la même année. Trois mois plus tard, le 16 novembre, il annonce sa candidature à l'élection présidentielle de 2017."
+		],
+		fillon: [
+			'François Fillon',
+			'Les républicains',
+			"Le 17 mai 2007, à la suite de la victoire de Nicolas Sarkozy à l'élection présidentielle, il est nommé Premier ministre, conduisant trois gouvernements et étant l'unique chef de gouvernement de la législature. Il quitte ses fonctions le 10 mai 2012, après la défaite de Nicolas Sarkozy à l'élection présidentielle.\n Candidat à la primaire de la droite et du centre de 2016, il défend un programme libéral-conservateur. Il l’emporte au second tour face à Alain Juppé et devient le candidat de son camp pour l'élection présidentielle de 2017."
+		],
+		hamon: [
+			'Benoit Hamon',
+			'Parti Socialiste',
+			"Élu député de la onzième circonscription des Yvelines en 2012, il est membre du gouvernement du 16 mai 2012 au 25 août 2014, en tant que ministre délégué à l'Économie sociale et solidaire et à la consommation puis ministre de l'Éducation nationale, de l'Enseignement supérieur et de la Recherche.\n Benoît Hamon remporte la primaire citoyenne de 2017 devant Manuel Valls, et devient ainsi le candidat du Parti socialiste à l'élection présidentielle de 2017."
+		]
+	}
+
+	function setCandidate(candidate) {
+		$('body').find('.identity').find('h2')[0].innerHTML = listCandidat[candidate][0];
+		$('body').find('.identity').find('h3')[0].innerHTML = listCandidat[candidate][1];
+		$('body').find('.identity').find('p')[0].innerHTML = listCandidat[candidate][2];
+	}
+
 	$('nav').find('.candidat').click(function() {
 		var candidatClass = this.id;
 		var toclean = false;
@@ -214,6 +248,7 @@ $(document).ready(function() {
 			$.find('#bigphoto')[0].setAttribute('src', 'img/lepen.png')
 			updateOpacityToday('MLP', mapdayi);
 			updateOpacity('MLP', mapdayj);
+			setCandidate('lepen');
 			((toclean) ? CleanMap(toclean) : NaN);
 		}
 
@@ -222,6 +257,7 @@ $(document).ready(function() {
 			$.find('#bigphoto')[0].setAttribute('src', 'img/macron.png')
 			updateOpacityToday('MAC', mapdayi);
 			updateOpacity('MAC', mapdayj);
+			setCandidate('macron');
 			((toclean) ? CleanMap(toclean) : NaN);
 		}
 
@@ -230,6 +266,7 @@ $(document).ready(function() {
 			$.find('#bigphoto')[0].setAttribute('src', 'img/fillon.png')
 			updateOpacityToday('FIL', mapdayi);
 			updateOpacity('FIL', mapdayj);
+			setCandidate('fillon');
 			((toclean) ? CleanMap(toclean) : NaN);
 		}
 
@@ -238,6 +275,7 @@ $(document).ready(function() {
 			$.find('#bigphoto')[0].setAttribute('src', 'img/hamon.png')	
 			updateOpacityToday('BHM', mapdayi);
 			updateOpacity('BHM', mapdayj);
+			setCandidate('hamon');
 			((toclean) ? CleanMap(toclean) : NaN);
 		}
 
@@ -246,6 +284,7 @@ $(document).ready(function() {
 			$.find('#bigphoto')[0].setAttribute('src', 'img/melanchon.png')
 			updateOpacityToday('JLM', mapdayi);
 			updateOpacity('JLM', mapdayj);
+			setCandidate('melenchon');
 			((toclean) ? CleanMap(toclean) : NaN);
 		}
 	});
@@ -302,5 +341,6 @@ $(document).ready(function() {
 	});
 
 	updateMap();
+	setCandidate('melenchon');
 	changeDataGraph(data2[0]['tweet']['JLM'], 0)
 });
