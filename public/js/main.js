@@ -1,5 +1,6 @@
 var mapdayi = 1;
 var mapdayj = 1;
+var listSelected = [0,0,0,0,0];
 
 function CleanMap(toclean) {
 	toclean = false;
@@ -313,42 +314,52 @@ $(document).ready(function() {
 				if ($(this).hasClass('selecttwo')) {
 					$(this).removeClass('selecttwo');
 					if(candidatClass === 'lepen') {
+						listSelected[4] = 0;
 						cleanDataGraph(4);
 					}
 					if(candidatClass === 'macron') {
+						listSelected[1] = 0;
 						cleanDataGraph(1);
 					}
 
 					if(candidatClass === 'fillon') {
+						listSelected[3] = 0;
 						cleanDataGraph(3);
 					}
 
 					if(candidatClass === 'hamon') {
+						listSelected[2] = 0;
 						cleanDataGraph(2);
 					}
 
 					if(candidatClass === 'melenchon') {
+						listSelected[0] = 0;
 						cleanDataGraph(0);
 					}
 				}
 				else {
 					$(this).addClass('selecttwo');
 					if(candidatClass === 'lepen') {
+						listSelected[4] = 1;
 						changeDataGraph(data2[0]['tweet']['MLP'], 4)
 					}
 					if(candidatClass === 'macron') {
+						listSelected[1] = 1;
 						changeDataGraph(data2[0]['tweet']['MAC'], 1)
 					}
 
 					if(candidatClass === 'fillon') {
+						listSelected[3] = 1;
 						changeDataGraph(data2[0]['tweet']['FIL'], 3)
 					}
 
 					if(candidatClass === 'hamon') {
+						listSelected[2] = 1;
 						changeDataGraph(data2[0]['tweet']['BNH'], 2)
 					}
 
 					if(candidatClass === 'melenchon') {
+						listSelected[0] = 1;
 						changeDataGraph(data2[0]['tweet']['JLM'], 0)
 					}
 				}
@@ -413,6 +424,21 @@ $(document).ready(function() {
 		if ($('body').scrollTop() >= 1240) {
 		 	pos = 1;
 		 	$('#conseil').show()
+		 	if (listSelected[4] === 1) {
+				$('#lepen').addClass('selecttwo');
+			}
+			if (listSelected[1] === 1) {
+				$('#macron').addClass('selecttwo');
+			}
+			if (listSelected[3] === 1) {
+				$('#fillon').addClass('selecttwo');
+			}
+			if (listSelected[2] === 1) {
+				$('#hamon').addClass('selecttwo');
+			}
+			if (listSelected[0] === 1) {
+				$('#melenchon').addClass('selecttwo');
+			}
 
 		}
 		else {
