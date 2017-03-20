@@ -68,6 +68,7 @@ html {
 }
 
 
+
 /*------------------------------------*\
 		$HEADER
 \*------------------------------------*/
@@ -133,33 +134,30 @@ header p  {
 Tooltips
 \*------------------------------------*/
 
-/* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    pointer-events:none; /*let mouse events pass through*/
+    opacity:0;
+    transition: opacity 0.3s;
+    text-shadow:1px 1px 0px gray;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
- 
-    /* Position the tooltip text - see examples below! */
+div.tooltip {
+    background: lightblue;
+    border:solid gray;
     position: absolute;
-    z-index: 1;
+    max-width: 8em;
+    text-align:center;
 }
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+div.fixed {
+    position:fixed;
 }
-
+g.tooltip:not(.css) {
+  fill:currentColor;
+}
+g.tooltip rect {
+    fill: lightblue;
+    stroke: gray;
+}
 
 /*------------------------------------*\
 		$NAV
