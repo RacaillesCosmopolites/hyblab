@@ -35,17 +35,17 @@ trajetSVGCandidat[candidatToInt['fillon']] = ['fillon1','fillon2','fillon3','fil
 
 villeCandidat[candidatToInt['lepen']] = ["Lyon", "Nantes", "Châteauroux", "Metz"];
 trajetCandidat[candidatToInt['lepen']] = [5, 26, 39, 46];
-trajetSVGCandidat[candidatToInt['lepen']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+trajetSVGCandidat[candidatToInt['lepen']] = ['lepen1','lepen2','lepen3','lepen4']
 
 
-villeCandidat[candidatToInt['macron']] = ["Lyon", "Toulon", "Londres", "Rocamadour", "Angers", "Paris", "Caen", "Talence"];//, "Dijon"]
+villeCandidat[candidatToInt['macron']] = ["Lyon", "Toulon", "Londres", "Rocamadour", "Angers", "Paris", "Caen", "Bordeaux"];//, "Dijon"]
 trajetCandidat[candidatToInt['macron']] = [5, 18, 21, 24, 28, 30, 32, 37];//51];
-trajetSVGCandidat[candidatToInt['macron']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+trajetSVGCandidat[candidatToInt['macron']] = ['macron1', 'macron1b','macron2','macron3','macron4','macron5','macron6','macron7','macron8']
 
 
 villeCandidat[candidatToInt['melenchon']] = ["Lyon", "Strasbourg"];//, "Paris", "Rennes", "Le Havre"];
 trajetCandidat[candidatToInt['melenchon']] = [5, 15]; //46, ]
-trajetSVGCandidat[candidatToInt['melenchon']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
+trajetSVGCandidat[candidatToInt['melenchon']] = ['melenchon1','melenchon2','melenchon3']
 
 
 
@@ -110,7 +110,6 @@ $(document).ready(function() {
 		var j = 0;
 		for (var i = 0; i < date - 1; i++) {
 			$('body').find('#Paris').css('fill', 'red')
-			console.log('blblbl')
 			if (trajetCandidat[candidatToInt[candidat]][i] < date) {
 				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).show();
 				$('body').find('#'+villeCandidat[candidatToInt[candidat]][i]).css('fill', 'red');
