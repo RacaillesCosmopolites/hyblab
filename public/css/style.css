@@ -616,7 +616,10 @@ g.tooltip rect {
 #content-credits img {
     width:auto;
     height:85px;
+    margin-bottom: 5px;
 }
 
 /* Sources */
-
+#img-sources {
+	width: 100%;
+}
