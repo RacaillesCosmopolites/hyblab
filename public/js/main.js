@@ -19,6 +19,14 @@ var intToCandidat = {
 	4: 'lepen'
 }
 
+var candidatToAbrv = {
+	0: 'JLM',
+	1: 'MAC',
+	2: 'HAM',
+	3: 'FIL',
+	4: 'MLP'
+}
+
 var villeCandidat = [[], [], [], [], []];
 var trajetCandidat = [[], [], [], [], []];
 var trajetSVGCandidat = [[], [], [], [], []];
@@ -98,6 +106,51 @@ $(document).ready(function() {
 		$('#velo').css('left', time);
 		time = slider.value+'%';
 		console.log(time);
+	});
+
+	$('#graphTwit').click(function() {
+		dataview = 'tweet';
+		// Clean graph
+		cleanDataGraph(0);
+		cleanDataGraph(1);
+		cleanDataGraph(2);
+		cleanDataGraph(3);
+		cleanDataGraph(4);
+		// View New line
+		$('.selecttwo').removeClass('selecttwo');
+		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		listSelected = [0,0,0,0,0];
+		$('#titreGraph')[0].innerHTML = "Nombre de tweets liés aux candidats.";
+	});
+
+	$('#graphSites').click(function() {
+		dataview = 'web';
+		// Clean graph
+		cleanDataGraph(0);
+		cleanDataGraph(1);
+		cleanDataGraph(2);
+		cleanDataGraph(3);
+		cleanDataGraph(4);
+		// View New line
+		$('.selecttwo').removeClass('selecttwo');
+		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		listSelected = [0,0,0,0,0];
+		$('#titreGraph')[0].innerHTML = "Audience des sites webs des candidats.";
+	});
+
+	$('#graphFace').click(function() {
+		dataview = 'fb';
+		// Clean graph
+		cleanDataGraph(0);
+		cleanDataGraph(1);
+		cleanDataGraph(2);
+		cleanDataGraph(3);
+		cleanDataGraph(4);
+		// View New line
+		$('.selecttwo').removeClass('selecttwo');
+		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		listSelected = [0,0,0,0,0];
+		$('#titreGraph')[0].innerHTML = "Augmentation en % du nombre de fan Facebook.";
 	});
 
 	function cleanVille() {
@@ -425,6 +478,7 @@ $(document).ready(function() {
 	setCandidate('melenchon');
 	changeDataGraph(data2[0][dataview]['JLM'], 0);
 	cleanVille();
+	$('#titreGraph')[0].innerHTML = "Nombre de retweets liés aux candidats.";
 
 
 

@@ -35,6 +35,14 @@ listRT = [
   'nb_retweets_macron_per_day.json'
 ]
 
+listWeb = [
+  'website_visits_fillon_per_day.json',
+  'website_visits_hamon_per_day.json',
+  'website_visits_le_pen_per_day.json',
+  'website_visits_melenchon_per_day.json',
+  'website_visits_macron_per_day.json'
+]
+
 listRegion = [
   'gtrends_alsace_per_day.json',
   'gtrends_aquitaine_per_day.json',
@@ -107,6 +115,19 @@ JsontoArr('./json/Tweeter/'+listRT[1], list, 'BNH', 'RT', 'NBRETWEETS');
 JsontoArr('./json/Tweeter/'+listRT[2], list, 'MLP', 'RT', 'NBRETWEETS');
 JsontoArr('./json/Tweeter/'+listRT[3], list, 'JLM', 'RT', 'NBRETWEETS');
 JsontoArr('./json/Tweeter/'+listRT[4], list, 'MAC', 'RT', 'NBRETWEETS');
+
+JsontoArr('./json/Websites/'+listWeb[0], list, 'FIL', 'web', 'Vue');
+JsontoArr('./json/Websites/'+listWeb[1], list, 'BNH', 'web', 'Vue');
+JsontoArr('./json/Websites/'+listWeb[2], list, 'MLP', 'web', 'Vue');
+JsontoArr('./json/Websites/'+listWeb[3], list, 'JLM', 'web', 'Vue');
+JsontoArr('./json/Websites/'+listWeb[4], list, 'MAC', 'web', 'Vue');
+
+JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'FIL', 'fb', 'Fillon');
+JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'MLP', 'fb', 'MLP');
+JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'JLM', 'fb', 'JLM');
+JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'MAC', 'fb', 'macron');
+JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'BNH', 'fb', 'BNH');
+
 
 
 var data = {
