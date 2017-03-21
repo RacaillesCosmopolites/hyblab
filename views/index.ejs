@@ -3,16 +3,65 @@
 <head>
 	<title>L'étape présidentielle</title>
 	<script src="./js/jquery-3.1.1.min.js" type="text/javascript"></script>
+	<script src="./js/popup.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+	<link rel="stylesheet" type="text/css" href="./css/style.css"></link>
 </head>
 
 <body>
 	<header>
+
+	<div class="popup" data-popup="popup-1">
+	    <div class="popup-inner">
+	        <h1>Sources</h1>
+	        <ul>
+			  	<li>Quintly</li>
+			  	<li>Google</li>
+			  	<li>Twitter</li>
+			  	<li>Antoine BEVORT</li>
+			  	<li>Semrush</li>
+			  	<li>BarowebAB</li>
+			</ul>
+	        <p><a data-popup-close="popup-1" href="#">Fermer</a></p>
+	        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+	    </div>
+	</div>
+
+	<div class="popup" data-popup="popup-2">
+	    <div class="popup-inner">
+	        <h1>Crédits</h1>
+	        <div id="content-credits">
+			  	<div id="c2-credits">
+					<img src="img/polytech.png" alt="Polytech Nantes">
+					<ul>
+					  	<li>Elève 1</li>
+					  	<li>Elève 2</li>
+					  	<li>Elève 3</li>
+					  	<li>Elève 4</li>
+					</ul>
+			  	</div>
+
+				<div id="c3-credits">
+			  		<img src="img/makinacorpus.png" alt="Makina-Corpus">
+			  	</div>
+
+				<div id="c1-credits">
+			  		<img src="img/edna.png" alt="École de design Nantes Atlantique">
+			     	<ul>
+					  	<li>Elève 1</li>
+					  	<li>Elève 2</li>
+					  	<li>Elève 3</li>
+					</ul>
+			  	</div>
+			</div>
+	        <a class="popup-close" data-popup-close="popup-2" href="#">x</a>
+	    </div>
+	</div>
+
 		<h1>L'étape présidentielle</h1>
 		<p>Version actuelle: Lun. 15h42</p>
-		<a class="button sources" href="#">Sources</a>
-		<a class="button credit" href="#">Crédits</a>
+		<a class="button sources" data-popup-open="popup-1" href="#" rel="modal:open">Sources</a>
+		<a class="button credit" data-popup-open="popup-2" href="#">Crédits</a>
 	</header>
 
 	<section class="container nav">
