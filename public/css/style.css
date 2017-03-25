@@ -297,12 +297,12 @@ g.tooltip rect {
 
 
 .region.melanchon {
-	fill:#F24472;
+	fill:#f20f05;
 }
 
 .region.melenchon {
 	/* Parce que on sait pas écrire son nom de la même façon... */
-	fill:#F24472;
+	fill:#f20f05;
 }
 
 .region.macron {
@@ -310,15 +310,15 @@ g.tooltip rect {
 }
 
 .region.hamon {
-	fill:#15BFBF;
+	fill:#F24472;
 }
 
 .region.fillon {
-	fill:#0806ff;
+	fill:#15BFBF;
 }
 
 .region.lepen {
-	fill:#f20f05;
+	fill:#0806ff;
 }
 
 .maps {
