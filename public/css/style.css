@@ -726,7 +726,7 @@ a#pres-candidat.tooltips-explication span:after {
     width:100%;
 }
 
-.c-credits { 
+.c-credits {
     width:33.33333333%;
     float:left;
 }
@@ -735,6 +735,21 @@ a#pres-candidat.tooltips-explication span:after {
     width:auto;
     height:85px;
     margin-bottom: 15px;
+}
+
+.content-credits-2 {
+	width:100%;
+}
+
+.content-credits-2 img {
+    width:auto;
+    height:35px;
+    margin-bottom: 30px;
+}
+
+.c2-credits {
+    width:25%;
+    float:left;
 }
 
 /* Sources */
