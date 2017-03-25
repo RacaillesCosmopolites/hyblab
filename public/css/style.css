@@ -164,6 +164,102 @@ g.tooltip rect {
 }
 
 /*------------------------------------*\
+		$EXPLICATION SUJET
+\*------------------------------------*/
+
+.explication {
+	height: 300px;
+}
+
+.explication p {
+	text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    margin: auto 10%;
+}
+
+a.tooltips-explication {
+  	position: relative;
+  	display: inline;
+	color: white;
+	text-decoration: underline;
+}
+
+a:visited.tooltips-explication {
+	color: white;
+}
+
+a.tooltips-explication span {
+	font-size: 15px;
+	position: absolute;
+	/*width: auto;*/
+	color: #FFFFFF;
+	background: #1A1C22;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	visibility: hidden;
+	border-radius: 6px;
+	/*box-shadow: 0px 0px 3px #FFFFFF;*/
+}
+
+a#pres-candidat.tooltips-explication span {
+	width: 25em;
+}
+
+a#pres-evt.tooltips-explication span {
+	width: 20em;
+}
+
+a#pres-interet.tooltips-explication span {
+	width: 35em;
+}
+
+a#pres-evt.tooltips-explication span:after, a#pres-interet.tooltips-explication span:after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -8px;
+	width: 0; height: 0;
+	border-top: 8px solid #1A1C22;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+a:hover#pres-interet.tooltips-explication span, a:hover#pres-evt.tooltips-explication span {
+	visibility: visible;
+	opacity: 0.8;
+	bottom: 50px;
+	left: 50%;
+	margin-left: -76px;
+	z-index: 999;
+}
+
+a:hover#pres-candidat.tooltips-explication span {
+	visibility: visible;
+	opacity: 0.8;
+	top: 50px;
+	left: 50%;
+	margin-left: -76px;
+	z-index: 999;
+}
+
+a#pres-candidat.tooltips-explication span:after {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -8px;
+	width: 0; height: 0;
+	border-bottom: 8px solid #1A1C22;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+/*------------------------------------*\
 		$NAV
 \*------------------------------------*/
 
