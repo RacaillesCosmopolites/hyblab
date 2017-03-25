@@ -713,7 +713,7 @@ a#pres-candidat.tooltips-explication span:after {
     line-height:100%;
     color:#fff;
 }
- 
+
 .popup-close:hover {
     -webkit-transform:translate(50%, -50%) rotate(180deg);
     transform:translate(50%, -50%) rotate(180deg);
