@@ -290,6 +290,11 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview]['MLP'], 4);
 				((toclean) ? cleanDataGraph(4) : NaN);
 				afficherTrajet('lepen', mapdayi);
+				$.find('.color')[0].style.background = "#0806ff";
+				$.find('.color')[1].style.background = "#0806ff";
+				$.find('.color')[2].style.background = "#0806ff";
+				$.find('.color')[3].style.background = "#0806ff";
+				$.find('.color')[4].style.background = "#0806ff";
 
 			}
 
@@ -303,6 +308,11 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview]['MAC'], 1);
 				((toclean) ? cleanDataGraph(1) : NaN);
 				afficherTrajet('macron', mapdayi);
+				$.find('.color')[0].style.background = "#52378C";
+				$.find('.color')[1].style.background = "#52378C";
+				$.find('.color')[2].style.background = "#52378C";
+				$.find('.color')[3].style.background = "#52378C";
+				$.find('.color')[4].style.background = "#52378C";
 			}
 
 			if(candidatClass === 'fillon') {
@@ -315,6 +325,11 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview]['FIL'], 3);
 				((toclean) ? cleanDataGraph(3) : NaN);
 				afficherTrajet('fillon', mapdayi);
+				$.find('.color')[0].style.background = "#15BFBF";
+				$.find('.color')[1].style.background = "#15BFBF";
+				$.find('.color')[2].style.background = "#15BFBF";
+				$.find('.color')[3].style.background = "#15BFBF";
+				$.find('.color')[4].style.background = "#15BFBF";
 			}
 
 			if(candidatClass === 'hamon') {
@@ -327,6 +342,11 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview]['BNH'], 2);
 				((toclean) ? cleanDataGraph(2) : NaN);
 				afficherTrajet('hamon', mapdayi);
+				$.find('.color')[0].style.background = "#F24472";
+				$.find('.color')[1].style.background = "#F24472";
+				$.find('.color')[2].style.background = "#F24472";
+				$.find('.color')[3].style.background = "#F24472";
+				$.find('.color')[4].style.background = "#F24472";
 			}
 
 			if(candidatClass === 'melenchon') {
@@ -339,6 +359,11 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview]['JLM'], 0);
 				((toclean) ? cleanDataGraph(0) : NaN);
 				afficherTrajet('melenchon', mapdayi);
+				$.find('.color')[0].style.background = "#f20f05";
+				$.find('.color')[1].style.background = "#f20f05";
+				$.find('.color')[2].style.background = "#f20f05";
+				$.find('.color')[3].style.background = "#f20f05";
+				$.find('.color')[4].style.background = "#f20f05";
 			}
 		}
 		if (pos == 1) {
