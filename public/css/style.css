@@ -85,7 +85,7 @@ body {
 }
 
 header {
-	padding: 100px 22%;
+	padding: 50px 22%;
 	color: #fff;
 	text-align: center;
 	background-image: url(../img/cover.png);
@@ -130,6 +130,10 @@ header p  {
 	margin: 0 10px 0 0;
 }
 
+#logo-team {
+	width: 60%;
+    height: auto;
+}
 /*------------------------------------*\
 Tooltips
 \*------------------------------------*/
