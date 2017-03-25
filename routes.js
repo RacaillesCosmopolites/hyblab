@@ -163,10 +163,10 @@ var data = {
     ],
     datasets: [
     {
-    fillColor : 'rgba(242, 68, 114, 0.4)',
-    strokeColor : "rgba(242, 68, 114, 0.8)",
-    pointColor : "rgba(242, 68, 114, 1)",
-    pointStrokeColor : "rgba(245, 105, 142, 1)",
+    fillColor : 'rgba(242, 15, 5, 0.4)',
+    strokeColor : "rgba(242, 15, 5, 0.8)",
+    pointColor : "rgba(242, 15, 5, 1)",
+    pointStrokeColor : "rgba(242, 25, 15, 0.8)",
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
@@ -174,6 +174,13 @@ var data = {
     strokeColor : "rgba(82, 55, 140, 0.8)",
     pointColor : "rgba(82, 55, 140, 1)",
     pointStrokeColor : "rgba(117, 95, 163, 1)",
+    data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
+    {
+    fillColor : 'rgba(242, 68, 114, 0.4)',
+    strokeColor : "rgba(242, 68, 114, 0.8)",
+    pointColor : "rgba(242, 68, 114, 1)",
+    pointStrokeColor : "rgba(245, 105, 142, 1)",
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
@@ -188,13 +195,6 @@ var data = {
     strokeColor : "rgba(8, 6, 255, 0.8)",
     pointColor : "rgba(8, 6, 255, 1)",
     pointStrokeColor : "rgba(15, 12, 255, 1)",
-    data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    },
-    {
-    fillColor : 'rgba(242, 15, 5, 0.4)',
-    strokeColor : "rgba(242, 15, 5, 0.8)",
-    pointColor : "rgba(242, 15, 5, 1)",
-    pointStrokeColor : "rgba(242, 25, 15, 0.8)",
     data : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     }
     ]
