@@ -657,6 +657,7 @@ a#pres-candidat.tooltips-explication span:after {
     top:0px;
     left:0px;
     background:rgba(0,0,0,0.75);
+	z-index: 1000;
 }
  
 /* Inner */
@@ -672,6 +673,7 @@ a#pres-candidat.tooltips-explication span:after {
     box-shadow:0px 2px 6px rgba(0,0,0,1);
     border-radius:10px;
     background:#464A5D;
+	z-index: 1000;
     /* #fff */
 }
  
@@ -704,16 +706,16 @@ a#pres-candidat.tooltips-explication span:after {
 }
 
 /* Credits */
-#content-credits {
+.content-credits {
     width:100%;
 }
 
-#c1-credits, #c2-credits, #c3-credits { 
+.c-credits { 
     width:33.33333333%;
     float:left;
 }
 
-#content-credits img {
+.content-credits img {
     width:auto;
     height:85px;
     margin-bottom: 15px;
