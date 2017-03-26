@@ -97,11 +97,11 @@ $(document).ready(function() {
 	var slider = document.getElementById('timeline');
 	var time = slider.value+'%';
 
-	$('#timeline').change(function() {
-		$('#velo').css('left', time);
-		time = slider.value+'%';
-		console.log(time);
-	});
+	// $('#timeline').change(function() {
+	// 	$('#velo').css('left', time);
+	// 	time = slider.value+'%';
+	// 	console.log(time);
+	// });
 
 	$('#timeline').click(function() {
 		$('#velo').css('left', time);
@@ -474,6 +474,7 @@ $(document).ready(function() {
 	});
 
 	document.addEventListener('scroll', function (event) {
+
 		if ($('body').scrollTop() >= 2200) {
 		 	pos = 1;
 		 	$('#conseil').show()
@@ -510,6 +511,12 @@ $(document).ready(function() {
 
 	updateMap();
 	setCandidate('melenchon');
+	cleanDataGraph(0);
+	cleanDataGraph(1);
+	cleanDataGraph(2);
+	cleanDataGraph(3);
+	cleanDataGraph(4);
+
 	changeDataGraph(data2[0][dataview]['JLM'], 0);
 	cleanVille();
 	$('#titreGraph')[0].innerHTML = "Nombre de retweets liés aux candidats.";

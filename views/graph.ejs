@@ -43,10 +43,47 @@ $(document).ready(function() {
 var data2 = <%- data2 %>;
 var region = <%- region %>;
 function changeDataGraph(newData, candidate) {
+	var fillColor = [
+	'rgba(242, 15, 5, 0.4)',
+	'rgba(82, 55, 140, 0.4)',	
+	'rgba(242, 68, 114, 0.4)',
+	'rgba(21, 191, 191, 0.4)',
+	'rgba(8, 6, 255, 0.4)'	
+	]
+	var pointColor = [
+	"rgba(242, 15, 5, 1)",
+	"rgba(82, 55, 140, 1)",
+	"rgba(242, 68, 114, 1)",
+	"rgba(21, 191, 191, 1)",
+	"rgba(8, 6, 255, 1)"
+	]
+	var pointStrokeColor = [
+	"rgba(242, 25, 15, 0.8)",
+	"rgba(117, 95, 163, 1)",
+	"rgba(245, 105, 142, 1)",
+	"rgba(68, 204, 204, 1)",
+	"rgba(15, 12, 255, 1)"
+	]
+	var strokeColor = [
+	"rgba(242, 15, 5, 0.8)",
+	"rgba(82, 55, 140, 0.8)",
+	"rgba(242, 68, 114, 0.8)",
+	"rgba(21, 191, 191, 0.8)",
+	"rgba(8, 6, 255, 0.8)"	
+	]
 	// activeChart.datasets[candidate].points.length
 	activeChart.scale.xLabels.length
+	activeChart.datasets[candidate].fillColor = fillColor[candidate];
+	activeChart.datasets[candidate].pointColor = pointColor[candidate];
+	activeChart.datasets[candidate].strokeColor = strokeColor[candidate];
+	activeChart.datasets[candidate].pointStrokeColor = pointStrokeColor[candidate];
+
 	for (var i = activeChart.scale.xLabels.length - 1; i >= 0; i--) {
 		activeChart.datasets[candidate].points[i].value = newData[i]
+		activeChart.datasets[candidate].points[i].fillColor = fillColor[candidate];
+		activeChart.datasets[candidate].points[i].pointColor = pointColor[candidate];
+		activeChart.datasets[candidate].points[i].strokeColor = strokeColor[candidate];
+		activeChart.datasets[candidate].points[i].pointStrokeColor = pointStrokeColor[candidate];
 	}
 	activeChart.update()
 };
@@ -54,8 +91,16 @@ function changeDataGraph(newData, candidate) {
 function cleanDataGraph(candidate) {
 	// activeChart.datasets[candidate].points.length
 	activeChart.scale.xLabels.length
+	activeChart.datasets[candidate].fillColor = "rgba(0,0,0,0)";
+	activeChart.datasets[candidate].pointColor = "rgba(0,0,0,0)";
+	activeChart.datasets[candidate].strokeColor = "rgba(0,0,0,0)";
+	activeChart.datasets[candidate].pointStrokeColor = "rgba(0,0,0,0)";
 	for (var i = activeChart.scale.xLabels.length - 1; i >= 0; i--) {
 		activeChart.datasets[candidate].points[i].value = 0;
+		activeChart.datasets[candidate].points[i].fillColor = "rgba(0,0,0,0)";
+		activeChart.datasets[candidate].points[i].pointColor = "rgba(0,0,0,0)";
+		activeChart.datasets[candidate].points[i].strokeColor = "rgba(0,0,0,0)";
+		activeChart.datasets[candidate].points[i].pointStrokeColor = "rgba(0,0,0,0)";
 	}
 	activeChart.update()
 };
