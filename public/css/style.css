@@ -613,11 +613,12 @@ a#pres-interet.tooltips-explication span:after {
 
 .container.graph nav {
 	width:100%;
+	text-align: center;
 }
 
 .container.graph nav div {
 	display: inline-block;
-    margin: auto 7%;
+    margin: auto 4%;
 }
 
 .graphselected {
