@@ -93,8 +93,9 @@ $(document).ready(function() {
 
 	var pos = 0; // Position in the page
 
-	// var slider = document.getElementById('timeline');
-	// var time = slider.value+'%';
+	/*
+	var slider = document.getElementById('timeline');
+	var time = slider.value+'%';
 
 	// $('#timeline').change(function() {
 	// 	$('#velo').css('left', time);
@@ -102,11 +103,12 @@ $(document).ready(function() {
 	// 	console.log(time);
 	// });
 
-	// $('#timeline').click(function() {
-	// 	$('#velo').css('left', time);
-	// 	time = slider.value+'%';
-	// 	console.log(time);
-	// });
+	$('#timeline').click(function() {
+		$('#velo').css('left', time);
+		time = slider.value+'%';
+		console.log(time);
+	});
+	*/
 
 	$('#graphTwit').click(function() {
 		dataview = 'tweet';
@@ -117,6 +119,8 @@ $(document).ready(function() {
 		cleanDataGraph(3);
 		cleanDataGraph(4);
 		// View New line
+		$('.graphselected').removeClass('graphselected');
+		$('#graphTwit').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
 		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
 		listSelected = [0,0,0,0,0];
@@ -132,6 +136,8 @@ $(document).ready(function() {
 		cleanDataGraph(3);
 		cleanDataGraph(4);
 		// View New line
+		$('.graphselected').removeClass('graphselected');
+		$('#graphSites').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
 		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
 		listSelected = [0,0,0,0,0];
@@ -147,6 +153,8 @@ $(document).ready(function() {
 		cleanDataGraph(3);
 		cleanDataGraph(4);
 		// View New line
+		$('.graphselected').removeClass('graphselected');
+		$('#graphFace').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
 		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
 		listSelected = [0,0,0,0,0];
@@ -464,8 +472,10 @@ $(document).ready(function() {
 		updateMap();
 
 	});
+
 	document.addEventListener('scroll', function (event) {
-		if ($('body').scrollTop() >= 1400) {
+
+		if ($('body').scrollTop() >= 2200) {
 		 	pos = 1;
 		 	$('#conseil').show()
 		 	if (listSelected[4] === 1) {

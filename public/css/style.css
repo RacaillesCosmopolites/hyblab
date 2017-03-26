@@ -551,13 +551,11 @@ a#pres-interet.tooltips-explication span:after {
 .container.graph {
 	position:relative;
 	height:50vh;
+	padding: 80px 14%;
 }
 
 .container.graph .chart {
-	position:absolute;
-    height: 90%;
-	bottom:0;
-	right:0;
+
 	margin:2em;
 }
 
@@ -600,53 +598,39 @@ a#pres-interet.tooltips-explication span:after {
 }
 
 .container.graph .explicationgraphe {
-	width:29%;
+	width:100%;
 	text-align:center;
 }
 
 .container.graph .explicationgraphe h1{
-	padding: 13%;
-    font-size: 30px;
+	margin: 0 0 50px 0;
+    font-weight: 700;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 .container.graph nav {
-	width:10%;
-	position: absolute;
-    top: 0;
-    margin-left: 28%;
-	height:95%;
+	width:100%;
 }
 
 .container.graph nav div {
-	height:24%;
-	width:100%;
-	margin:3% auto;
-	border:2px transparent solid;
-	text-align:center;
-	position:relative;
+	display: inline-block;
+    margin: auto 7%;
 }
 
-.container.graph nav div  img{
-	position:absolute;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.container.graph nav div:nth-child(2) {
-	/*display:none;*/
-}
-
-.container.graph .twitter {
-	height:100%;
-	width:100%;
-	margin:0;
-}
-
-.container.graph nav .twitter div{
-	display:inline-block;
-	width:40%;
-	height:100%;
-	margin:0 4%;
+.graphselected {
+	/* basic */ 
+	background-color: #2f3240;
+	/* border-radius */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	/* box-shadow */
+	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+	-moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+	box-shadow: rgba(0,0,0,0.8) 0 0 10px;
 }
 
 .container.graph nav div.item-selected {
