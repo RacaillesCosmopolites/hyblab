@@ -568,6 +568,11 @@ a#pres-interet.tooltips-explication span:after {
 .insideGraph {
 	width: 800px;
 }
+
+#inside2 {
+    margin-left: 30px;
+}
+
 .container.graph .chart {
     display: inline-flex;
     flex-direction: row;
@@ -578,7 +583,7 @@ a#pres-interet.tooltips-explication span:after {
     height: 500px;
     /* position: absolute; */
 	margin:2em;	
-    margin-left: -200px;
+    margin-left: -120px;
 }
 
 .container.graph .timeline-graph {
