@@ -93,20 +93,20 @@ $(document).ready(function() {
 
 	var pos = 0; // Position in the page
 
-	var slider = document.getElementById('timeline');
-	var time = slider.value+'%';
+	// var slider = document.getElementById('timeline');
+	// var time = slider.value+'%';
 
-	$('#timeline').change(function() {
-		$('#velo').css('left', time);
-		time = slider.value+'%';
-		console.log(time);
-	});
+	// $('#timeline').change(function() {
+	// 	$('#velo').css('left', time);
+	// 	time = slider.value+'%';
+	// 	console.log(time);
+	// });
 
-	$('#timeline').click(function() {
-		$('#velo').css('left', time);
-		time = slider.value+'%';
-		console.log(time);
-	});
+	// $('#timeline').click(function() {
+	// 	$('#velo').css('left', time);
+	// 	time = slider.value+'%';
+	// 	console.log(time);
+	// });
 
 	$('#graphTwit').click(function() {
 		dataview = 'tweet';
@@ -465,7 +465,7 @@ $(document).ready(function() {
 
 	});
 	document.addEventListener('scroll', function (event) {
-		if ($('body').scrollTop() >= 1240) {
+		if ($('body').scrollTop() >= 1400) {
 		 	pos = 1;
 		 	$('#conseil').show()
 		 	if (listSelected[4] === 1) {
@@ -501,6 +501,12 @@ $(document).ready(function() {
 
 	updateMap();
 	setCandidate('melenchon');
+	cleanDataGraph(0);
+	cleanDataGraph(1);
+	cleanDataGraph(2);
+	cleanDataGraph(3);
+	cleanDataGraph(4);
+
 	changeDataGraph(data2[0][dataview]['JLM'], 0);
 	cleanVille();
 	$('#titreGraph')[0].innerHTML = "Nombre de retweets liés aux candidats.";
