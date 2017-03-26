@@ -517,6 +517,13 @@ a#pres-interet.tooltips-explication span:after {
 	opacity: 0.2;
 }
 
+#graphic nav {
+	margin-bottom: 20px;
+}
+
+#graphic h2 {
+	margin-top: -20px;
+}
 
 /*------------------------------------*\
 		$VELO
