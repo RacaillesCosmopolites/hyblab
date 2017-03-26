@@ -1,6 +1,11 @@
 <div class="chart">
 	<h2 id="titreGraph">5 candidats cette semaine</h2>
-	<canvas id="myChart" width="1000" height="400"></canvas>
+	<div class="insideGraph">
+		<canvas id="myChart" width="1000" height="400"></canvas>
+	</div>
+	<div class="insideGraph">
+		<canvas id="myChart2" width="1000" height="400"></canvas>
+	</div>
 </div>
 
 
@@ -11,6 +16,7 @@ var activeChart
 $(document).ready(function() {
 
 	var ctx = $("#myChart").get(0).getContext("2d");
+	var ctx2 = $("#myChart2").get(0).getContext("2d");
 
 	var gradientred = ctx.createLinearGradient(0, 0, 0, 400);
 	gradientred.addColorStop(0, 'rgba(242, 68, 114, 0.4)');
@@ -35,8 +41,9 @@ $(document).ready(function() {
 	var data = <%- datain %>;
 	var options = <%- optionin %>;
 	activeChart = new Chart(ctx).Line(data,options);
-
+	activeChart = new Chart(ctx2).Line(data,options);
 	var data2 = <%- data2 %>;
+
 
 
 });
