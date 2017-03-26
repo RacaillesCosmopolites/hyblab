@@ -1,7 +1,13 @@
 var mapdayi = 1;
 var mapdayj = 1;
 var listSelected = [0,0,0,0,0];
-var dataview = 'RT';
+var dataviewList = [
+['tweet', 'RT'],
+['fb', 'fan'],
+['web', 'web']
+];
+
+var dataview = dataviewList[0];
 
 var candidatToInt = {
 	lepen: 4,
@@ -22,7 +28,7 @@ var intToCandidat = {
 var candidatToAbrv = {
 	0: 'JLM',
 	1: 'MAC',
-	2: 'HAM',
+	2: 'BNH',
 	3: 'FIL',
 	4: 'MLP'
 }
@@ -54,7 +60,6 @@ trajetSVGCandidat[candidatToInt['macron']] = ['macron1', 'macron1b','macron2','m
 villeCandidat[candidatToInt['melenchon']] = ["Lyon", "Strasbourg"];//, "Paris", "Rennes", "Le Havre"];
 trajetCandidat[candidatToInt['melenchon']] = [5, 15]; //46, ]
 trajetSVGCandidat[candidatToInt['melenchon']] = ['melenchon1','melenchon2','melenchon3']
-
 
 
 function CleanMap(toclean) {
@@ -89,6 +94,19 @@ function CleanMap(toclean) {
 	}, 10);
 };
 
+function CleanDataAll() {
+	cleanDataGraph(0, activeChart);
+	cleanDataGraph(1, activeChart);
+	cleanDataGraph(2, activeChart);
+	cleanDataGraph(3, activeChart);
+	cleanDataGraph(4, activeChart);
+	cleanDataGraph(0, activeChart2);
+	cleanDataGraph(1, activeChart2);
+	cleanDataGraph(2, activeChart2);
+	cleanDataGraph(3, activeChart2);
+	cleanDataGraph(4, activeChart2);
+}
+
 $(document).ready(function() {
 
 	var pos = 0; // Position in the page
@@ -111,54 +129,47 @@ $(document).ready(function() {
 	*/
 
 	$('#graphTwit').click(function() {
-		dataview = 'tweet';
+		dataview = dataviewList[0];
 		// Clean graph
-		cleanDataGraph(0);
-		cleanDataGraph(1);
-		cleanDataGraph(2);
-		cleanDataGraph(3);
-		cleanDataGraph(4);
+		CleanDataAll();
 		// View New line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphTwit').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
-		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		$('#inside2').show();
+		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
+		changeDataGraph(data2[0][dataview[1]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart2)
 		listSelected = [0,0,0,0,0];
-		$('#titreGraph')[0].innerHTML = "Nombre de tweets liés aux candidats.";
+		$('#titreGraph')[0].innerHTML = "Nombre de tweets liés aux candidats. / Nombre de retweets";
 	});
 
 	$('#graphSites').click(function() {
-		dataview = 'web';
+		dataview = dataviewList[2];
 		// Clean graph
-		cleanDataGraph(0);
-		cleanDataGraph(1);
-		cleanDataGraph(2);
-		cleanDataGraph(3);
-		cleanDataGraph(4);
+		CleanDataAll();
 		// View New line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphSites').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
-		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
+		$('#inside2').hide();
 		listSelected = [0,0,0,0,0];
 		$('#titreGraph')[0].innerHTML = "Audience des sites webs des candidats.";
 	});
 
 	$('#graphFace').click(function() {
-		dataview = 'fb';
-		// Clean graph
-		cleanDataGraph(0);
-		cleanDataGraph(1);
-		cleanDataGraph(2);
-		cleanDataGraph(3);
-		cleanDataGraph(4);
+		dataview = dataviewList[1];
+		// Clean graph 1
+		CleanDataAll();
 		// View New line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphFace').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
-		changeDataGraph(data2[0][dataview][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id])
+		$('#inside2').show();
+		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
+		changeDataGraph(data2[0][dataview[1]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart2)
 		listSelected = [0,0,0,0,0];
-		$('#titreGraph')[0].innerHTML = "Augmentation en % du nombre de fan Facebook.";
+		$('#titreGraph')[0].innerHTML = "Augmentation en % du nombre de fan Facebook. / Nombre de fans des candidats";
 	});
 
 	function cleanVille() {
@@ -272,11 +283,7 @@ $(document).ready(function() {
 			$('.color').removeClass('fillon');
 			$('.color').removeClass('hamon');
 			$('.color').removeClass('melenchon');
-			cleanDataGraph(0);
-			cleanDataGraph(1);
-			cleanDataGraph(2);
-			cleanDataGraph(3);
-			cleanDataGraph(4);
+			CleanDataAll();
 			listSelected = [0,0,0,0,0];
 			if($(this).hasClass('selected')) {	
 				$(this).removeClass('selected');
@@ -295,8 +302,9 @@ $(document).ready(function() {
 				updateOpacity('MLP', mapdayj);
 				setCandidate('lepen');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0][dataview]['MLP'], 4);
-				((toclean) ? cleanDataGraph(4) : NaN);
+				changeDataGraph(data2[0][dataview[0]]['MLP'], 4, activeChart);
+				changeDataGraph(data2[0][dataview[1]]['MLP'], 4, activeChart2);
+				((toclean) ? cleanDataGraph(4, activeChart) : NaN);
 				afficherTrajet('lepen', mapdayi);
 				$.find('.color')[0].style.background = "#0806ff";
 				$.find('.color')[1].style.background = "#0806ff";
@@ -313,8 +321,9 @@ $(document).ready(function() {
 				updateOpacity('MAC', mapdayj);
 				setCandidate('macron');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0][dataview]['MAC'], 1);
-				((toclean) ? cleanDataGraph(1) : NaN);
+				changeDataGraph(data2[0][dataview[0]]['MAC'], 1, activeChart);
+				changeDataGraph(data2[0][dataview[1]]['MAC'], 1, activeChart2);
+				((toclean) ? cleanDataGraph(1, activeChart) : NaN);
 				afficherTrajet('macron', mapdayi);
 				$.find('.color')[0].style.background = "#52378C";
 				$.find('.color')[1].style.background = "#52378C";
@@ -330,8 +339,9 @@ $(document).ready(function() {
 				updateOpacity('FIL', mapdayj);
 				setCandidate('fillon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0][dataview]['FIL'], 3);
-				((toclean) ? cleanDataGraph(3) : NaN);
+				changeDataGraph(data2[0][dataview[0]]['FIL'], 3, activeChart);
+				changeDataGraph(data2[0][dataview[1]]['FIL'], 3, activeChart2);
+				((toclean) ? cleanDataGraph(3, activeChart) : NaN);
 				afficherTrajet('fillon', mapdayi);
 				$.find('.color')[0].style.background = "#15BFBF";
 				$.find('.color')[1].style.background = "#15BFBF";
@@ -347,8 +357,9 @@ $(document).ready(function() {
 				updateOpacity('BHM', mapdayj);
 				setCandidate('hamon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0][dataview]['BNH'], 2);
-				((toclean) ? cleanDataGraph(2) : NaN);
+				changeDataGraph(data2[0][dataview[0]]['BNH'], 2, activeChart);
+				changeDataGraph(data2[0][dataview[1]]['BNH'], 2, activeChart2);
+				((toclean) ? cleanDataGraph(2, activeChart) : NaN);
 				afficherTrajet('hamon', mapdayi);
 				$.find('.color')[0].style.background = "#F24472";
 				$.find('.color')[1].style.background = "#F24472";
@@ -364,8 +375,9 @@ $(document).ready(function() {
 				updateOpacity('JLM', mapdayj);
 				setCandidate('melenchon');
 				((toclean) ? CleanMap(toclean) : NaN);
-				changeDataGraph(data2[0][dataview]['JLM'], 0);
-				((toclean) ? cleanDataGraph(0) : NaN);
+				changeDataGraph(data2[0][dataview[0]]['JLM'], 0, activeChart);
+				changeDataGraph(data2[0][dataview[1]]['JLM'], 0, activeChart2);
+				((toclean) ? cleanDataGraph(0, activeChart) : NaN);
 				afficherTrajet('melenchon', mapdayi);
 				$.find('.color')[0].style.background = "#f20f05";
 				$.find('.color')[1].style.background = "#f20f05";
@@ -382,52 +394,62 @@ $(document).ready(function() {
 					$(this).removeClass('selecttwo');
 					if(candidatClass === 'lepen') {
 						listSelected[4] = 0;
-						cleanDataGraph(4);
+						cleanDataGraph(4, activeChart);
+						cleanDataGraph(4, activeChart2);
 					}
 					if(candidatClass === 'macron') {
 						listSelected[1] = 0;
-						cleanDataGraph(1);
+						cleanDataGraph(1, activeChart);
+						cleanDataGraph(1, activeChart2);
 					}
 
 					if(candidatClass === 'fillon') {
 						listSelected[3] = 0;
-						cleanDataGraph(3);
+						cleanDataGraph(3, activeChart);
+						cleanDataGraph(3, activeChart2);
 					}
 
 					if(candidatClass === 'hamon') {
 						listSelected[2] = 0;
-						cleanDataGraph(2);
+						cleanDataGraph(2, activeChart);
+						cleanDataGraph(2, activeChart2);
 					}
 
 					if(candidatClass === 'melenchon') {
 						listSelected[0] = 0;
-						cleanDataGraph(0);
+						cleanDataGraph(0, activeChart);
+						cleanDataGraph(0, activeChart2);
 					}
 				}
 				else {
 					$(this).addClass('selecttwo');
 					if(candidatClass === 'lepen') {
 						listSelected[4] = 1;
-						changeDataGraph(data2[0][dataview]['MLP'], 4)
+						changeDataGraph(data2[0][dataview[0]]['MLP'], 4, activeChart)
+						changeDataGraph(data2[0][dataview[1]]['MLP'], 4, activeChart2)
 					}
 					if(candidatClass === 'macron') {
 						listSelected[1] = 1;
-						changeDataGraph(data2[0][dataview]['MAC'], 1)
+						changeDataGraph(data2[0][dataview[0]]['MAC'], 1, activeChart)
+						changeDataGraph(data2[0][dataview[1]]['MAC'], 1, activeChart2)
 					}
 
 					if(candidatClass === 'fillon') {
 						listSelected[3] = 1;
-						changeDataGraph(data2[0][dataview]['FIL'], 3)
+						changeDataGraph(data2[0][dataview[0]]['FIL'], 3, activeChart)
+						changeDataGraph(data2[0][dataview[1]]['FIL'], 3, activeChart2)
 					}
 
 					if(candidatClass === 'hamon') {
 						listSelected[2] = 1;
-						changeDataGraph(data2[0][dataview]['BNH'], 2)
+						changeDataGraph(data2[0][dataview[0]]['BNH'], 2, activeChart)
+						changeDataGraph(data2[0][dataview[1]]['BNH'], 2, activeChart2)
 					}
 
 					if(candidatClass === 'melenchon') {
 						listSelected[0] = 1;
-						changeDataGraph(data2[0][dataview]['JLM'], 0)
+						changeDataGraph(data2[0][dataview[0]]['JLM'], 0, activeChart)
+						changeDataGraph(data2[0][dataview[1]]['JLM'], 0, activeChart2)
 					}
 				}
 			};
@@ -475,7 +497,7 @@ $(document).ready(function() {
 
 	document.addEventListener('scroll', function (event) {
 
-		if ($('body').scrollTop() >= 2200) {
+		if ($('body').scrollTop() >= 1400) {
 		 	pos = 1;
 		 	$('#conseil').show()
 		 	if (listSelected[4] === 1) {
@@ -511,15 +533,12 @@ $(document).ready(function() {
 
 	updateMap();
 	setCandidate('melenchon');
-	cleanDataGraph(0);
-	cleanDataGraph(1);
-	cleanDataGraph(2);
-	cleanDataGraph(3);
-	cleanDataGraph(4);
+	CleanDataAll();
 
-	changeDataGraph(data2[0][dataview]['JLM'], 0);
-	cleanVille();
-	$('#titreGraph')[0].innerHTML = "Nombre de retweets liés aux candidats.";
+	changeDataGraph(data2[0][dataview[0]]['JLM'], 0, activeChart);
+	changeDataGraph(data2[0][dataview[1]]['JLM'], 0, activeChart2);
+	cleanVille(); 
+	$('#titreGraph')[0].innerHTML = "Nombre de tweets liés au candidat / Nombre de retweets.";
 
 
 

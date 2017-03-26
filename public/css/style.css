@@ -543,6 +543,10 @@ a#pres-interet.tooltips-explication span:after {
 }
 
 /*Graph*/
+#titreGraph {
+	position: absolute;
+}
+
 
 .container.graph h2 {
 	margin-bottom:2vh;
@@ -554,9 +558,20 @@ a#pres-interet.tooltips-explication span:after {
 	padding: 80px 14%;
 }
 
+.insideGraph {
+	width: 800px;
+}
 .container.graph .chart {
-
-	margin:2em;
+    display: inline-flex;
+    flex-direction: row;
+    /* flex-basis: 637px; */
+    flex-grow: 0;
+    height: 400px;
+    width: 1600px;
+    height: 500px;
+    /* position: absolute; */
+	margin:2em;	
+    margin-left: -200px;
 }
 
 .container.graph .timeline-graph {
