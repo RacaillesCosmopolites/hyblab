@@ -181,7 +181,7 @@ g.tooltip rect {
     font-weight: bolder;
     font-size: 32px;
 }
-
+/* http://www.cssportal.com/css-tooltip-generator */
 a.tooltips-explication {
   	position: relative;
   	display: inline;
@@ -336,7 +336,6 @@ a#pres-interet.tooltips-explication span:after {
     margin-top: 15px;
     display: none;
 }
-
 
 /*------------------------------------*\
 		$CANDIDATS
@@ -690,7 +689,7 @@ a#pres-interet.tooltips-explication span:after {
 	z-index: 1000;
     /* #fff */
 }
- 
+
 /* Close Button */
 .popup-close {
     width:30px;
