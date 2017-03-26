@@ -1,15 +1,16 @@
 # Descriptif du projet
 
-Média :
+Média : Makina Corpus
 
-Sujet :
+Sujet : L'influence des meetings sur l'intérêt des français pour les candidats
 
-Equipe :
+Equipe : Les Racailles Cosmopolites
 
 Patricipants :
 
-- EDNA :
-- Polytech :  
+- EDNA : Noémie DUVAL, Cyriac JANNEL, Anastasia PESCHEUX-SERGIENKO
+- Polytech : Valentin BOUCHEVREAU, Nicolas GAILLARD, Anthony GRIFFON, Quentin LEVAVASSEUR
+- Makina Corpus : Antonio FIDALGO, Simon GEORGES
 
 # Installation
 
