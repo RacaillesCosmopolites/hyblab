@@ -128,7 +128,11 @@ JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'JLM', 'fb', 'JLM
 JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'MAC', 'fb', 'macron');
 JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'BNH', 'fb', 'BNH');
 
-
+JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'FIL', 'fan', 'Fillon');
+JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'MLP', 'fan', 'MLP');
+JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'JLM', 'fan', 'JLM');
+JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'MAC', 'fan', 'macron');
+JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'BNH', 'fan', 'BNH');
 
 var data = {
     labels : [

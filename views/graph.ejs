@@ -41,7 +41,7 @@ $(document).ready(function() {
 	var data = <%- datain %>;
 	var options = <%- optionin %>;
 	activeChart = new Chart(ctx).Line(data,options);
-	activeChart = new Chart(ctx2).Line(data,options);
+	activeChart2 = new Chart(ctx2).Line(data,options);
 	var data2 = <%- data2 %>;
 
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 });
 var data2 = <%- data2 %>;
 var region = <%- region %>;
-function changeDataGraph(newData, candidate) {
+function changeDataGraph(newData, candidate, activeChart) {
 	var fillColor = [
 	'rgba(242, 15, 5, 0.4)',
 	'rgba(82, 55, 140, 0.4)',	
@@ -95,7 +95,7 @@ function changeDataGraph(newData, candidate) {
 	activeChart.update()
 };
 
-function cleanDataGraph(candidate) {
+function cleanDataGraph(candidate, activeChart) {
 	// activeChart.datasets[candidate].points.length
 	activeChart.scale.xLabels.length
 	activeChart.datasets[candidate].fillColor = "rgba(0,0,0,0)";
