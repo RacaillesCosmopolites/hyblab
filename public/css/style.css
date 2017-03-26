@@ -623,6 +623,19 @@ a#pres-candidat.tooltips-explication span:after {
     margin: auto 7%;
 }
 
+.graphselected {
+	/* basic */ 
+	background-color: #2f3240;
+	/* border-radius */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	/* box-shadow */
+	-webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+	-moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+	box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+}
+
 .container.graph nav div.item-selected {
 	border:2px white solid;
 }
