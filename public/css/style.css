@@ -633,6 +633,7 @@ a#pres-candidat.tooltips-explication span:after {
 	position:absolute;
 	top: 50%;
 	transform: translateY(-50%);
+	border-radius: 6px;
 }
 
 .container.graph nav div:nth-child(2) {
