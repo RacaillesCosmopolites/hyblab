@@ -4,7 +4,7 @@ var listSelected = [0,0,0,0,0];
 var dataviewList = [
 ['tweet', 'RT'],
 ['fb', 'fan'],
-['web', 'RT']
+['web', 'web']
 ];
 
 var dataview = dataviewList[0];
@@ -136,6 +136,7 @@ $(document).ready(function() {
 		$('.graphselected').removeClass('graphselected');
 		$('#graphTwit').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
+		$('#inside2').show();
 		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
 		changeDataGraph(data2[0][dataview[1]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart2)
 		listSelected = [0,0,0,0,0];
@@ -151,6 +152,7 @@ $(document).ready(function() {
 		$('#graphSites').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
 		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
+		$('#inside2').hide();
 		listSelected = [0,0,0,0,0];
 		$('#titreGraph')[0].innerHTML = "Audience des sites webs des candidats.";
 	});
@@ -163,10 +165,11 @@ $(document).ready(function() {
 		$('.graphselected').removeClass('graphselected');
 		$('#graphFace').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
+		$('#inside2').show();
 		changeDataGraph(data2[0][dataview[0]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart)
 		changeDataGraph(data2[0][dataview[1]][candidatToAbrv[candidatToInt[$('.selected')[0].id]]], candidatToInt[$('.selected')[0].id], activeChart2)
 		listSelected = [0,0,0,0,0];
-		$('#titreGraph')[0].innerHTML = "Augmentation en % du nombre de fan Facebook.";
+		$('#titreGraph')[0].innerHTML = "Augmentation en % du nombre de fan Facebook. / Nombre de fans des candidats";
 	});
 
 	function cleanVille() {
