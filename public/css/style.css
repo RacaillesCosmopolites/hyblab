@@ -176,8 +176,10 @@ g.tooltip rect {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 30px;
     margin: auto 10%;
+	line-height: 2;
+    font-weight: bolder;
+    font-size: 32px;
 }
 
 a.tooltips-explication {
@@ -206,34 +208,18 @@ a.tooltips-explication span {
 }
 
 a#pres-candidat.tooltips-explication span {
-	width: 25em;
-}
-
-a#pres-evt.tooltips-explication span {
-	width: 20em;
+	width: 360px;
 }
 
 a#pres-interet.tooltips-explication span {
-	width: 35em;
+	width: 360px;
 }
 
-a#pres-evt.tooltips-explication span:after, a#pres-interet.tooltips-explication span:after {
-	content: '';
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	margin-left: -8px;
-	width: 0; height: 0;
-	border-top: 8px solid #1A1C22;
-	border-right: 8px solid transparent;
-	border-left: 8px solid transparent;
-}
-
-a:hover#pres-interet.tooltips-explication span, a:hover#pres-evt.tooltips-explication span {
+a:hover#pres-interet.tooltips-explication span {
 	visibility: visible;
 	opacity: 0.8;
 	bottom: 50px;
-	left: 50%;
+	left: 0%;
 	margin-left: -76px;
 	z-index: 999;
 }
@@ -242,7 +228,7 @@ a:hover#pres-candidat.tooltips-explication span {
 	visibility: visible;
 	opacity: 0.8;
 	top: 50px;
-	left: 50%;
+	left: 0%;
 	margin-left: -76px;
 	z-index: 999;
 }
@@ -255,6 +241,18 @@ a#pres-candidat.tooltips-explication span:after {
 	margin-left: -8px;
 	width: 0; height: 0;
 	border-bottom: 8px solid #1A1C22;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+a#pres-interet.tooltips-explication span:after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -8px;
+	width: 0; height: 0;
+	border-top: 8px solid #1A1C22;
 	border-right: 8px solid transparent;
 	border-left: 8px solid transparent;
 }
@@ -675,7 +673,7 @@ a#pres-candidat.tooltips-explication span:after {
     background:rgba(0,0,0,0.75);
 	z-index: 1000;
 }
- 
+
 /* Inner */
 .popup-inner {
     max-width:700px;
