@@ -305,6 +305,7 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview[0]]['MLP'], 4, activeChart);
 				changeDataGraph(data2[0][dataview[1]]['MLP'], 4, activeChart2);
 				((toclean) ? cleanDataGraph(4, activeChart) : NaN);
+				((toclean) ? cleanDataGraph(4, activeChart2) : NaN);
 				afficherTrajet('lepen', mapdayi);
 				$.find('.color')[0].style.background = "#0806ff";
 				$.find('.color')[1].style.background = "#0806ff";
@@ -324,6 +325,7 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview[0]]['MAC'], 1, activeChart);
 				changeDataGraph(data2[0][dataview[1]]['MAC'], 1, activeChart2);
 				((toclean) ? cleanDataGraph(1, activeChart) : NaN);
+				((toclean) ? cleanDataGraph(1, activeChart2) : NaN);
 				afficherTrajet('macron', mapdayi);
 				$.find('.color')[0].style.background = "#52378C";
 				$.find('.color')[1].style.background = "#52378C";
@@ -342,6 +344,7 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview[0]]['FIL'], 3, activeChart);
 				changeDataGraph(data2[0][dataview[1]]['FIL'], 3, activeChart2);
 				((toclean) ? cleanDataGraph(3, activeChart) : NaN);
+				((toclean) ? cleanDataGraph(3, activeChart2) : NaN);
 				afficherTrajet('fillon', mapdayi);
 				$.find('.color')[0].style.background = "#15BFBF";
 				$.find('.color')[1].style.background = "#15BFBF";
@@ -360,6 +363,7 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview[0]]['BNH'], 2, activeChart);
 				changeDataGraph(data2[0][dataview[1]]['BNH'], 2, activeChart2);
 				((toclean) ? cleanDataGraph(2, activeChart) : NaN);
+				((toclean) ? cleanDataGraph(2, activeChart2) : NaN);
 				afficherTrajet('hamon', mapdayi);
 				$.find('.color')[0].style.background = "#F24472";
 				$.find('.color')[1].style.background = "#F24472";
@@ -378,6 +382,7 @@ $(document).ready(function() {
 				changeDataGraph(data2[0][dataview[0]]['JLM'], 0, activeChart);
 				changeDataGraph(data2[0][dataview[1]]['JLM'], 0, activeChart2);
 				((toclean) ? cleanDataGraph(0, activeChart) : NaN);
+				((toclean) ? cleanDataGraph(0, activeChart2) : NaN);
 				afficherTrajet('melenchon', mapdayi);
 				$.find('.color')[0].style.background = "#f20f05";
 				$.find('.color')[1].style.background = "#f20f05";
