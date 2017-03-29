@@ -1,23 +1,23 @@
-// @Desc: GlobalVariables----------
+// @Desc: GlobalVariables ----------
 
-// day of each maps
+// Day of each maps
 var mapdayi = 1;
 var mapdayj = 1;
 
-// selection memory
+// Selection memory
 var listSelected = [0,0,0,0,0];
 
-// dataview list available
+// Dataview list available
 var dataviewList = [
 ['tweet', 'RT'],
 ['fb', 'fan'],
 ['web', 'web']
 ];
 
-// actual dataview
+// Actual dataview
 var dataview = dataviewList[0];
 
-// to convert candidats
+// To convert candidats
 var candidatToInt = {
 	lepen: 4,
 	macron: 1,
@@ -42,7 +42,7 @@ var candidatToAbrv = {
 	4: 'MLP'
 }
 
-// candidats' destinations
+// Candidates' destinations
 var villeCandidat = [[], [], [], [], []];
 var trajetCandidat = [[], [], [], [], []];
 var trajetSVGCandidat = [[], [], [], [], []];
@@ -69,56 +69,56 @@ trajetSVGCandidat[candidatToInt['melenchon']] = ['melenchon1','melenchon2','mele
 
 function CleanMap(toclean) {
 	/*
-	 * @Desc: To clean the map after 10ms
+	 * @Desc: To clean the map after 10 ms
 	 */
-	toclean = false;
-	setTimeout(() => {
+	 toclean = false;
+	 setTimeout(() => {
 
-		function a(carte) {
-			$(carte).find('#Alsace').css('opacity', 1);
-			$(carte).find('#Loraine').css('opacity', 1);
-			$(carte).find('#Nord').css('opacity', 1);
-			$(carte).find('#Champagne').css('opacity', 1);
-			$(carte).find('#Picardie').css('opacity', 1);
-			$(carte).find('#Bourgogne').css('opacity', 1);
-			$(carte).find('#Franche').css('opacity', 1);
-			$(carte).find('#RhoneAlpes').css('opacity', 1);
-			$(carte).find('#Auvergne').css('opacity', 1);
-			$(carte).find('#Languedoc').css('opacity', 1);
-			$(carte).find('#PACA').css('opacity', 1);
-			$(carte).find('#Haute_Normandie').css('opacity', 1);
-			$(carte).find('#Basse_Normandie').css('opacity', 1);
-			$(carte).find('#Centre').css('opacity', 1);
-			$(carte).find('#PDL').css('opacity', 1);
-			$(carte).find('#IDF').css('opacity', 1);
-			$(carte).find('#Bretagne').css('opacity', 1);
-			$(carte).find('#Limousin').css('opacity', 1);
-			$(carte).find('#Corse').css('opacity', 1);
-			$(carte).find('#Poitou').css('opacity', 1);
-			$(carte).find('#Aquitaine').css('opacity', 1);
-			$(carte).find('#Midi').css('opacity', 1);
-		};
-		['#carteToday', '#carteWeek'].map(e => a(e));	
-	}, 10);
-};
+	 	function a(carte) {
+	 		$(carte).find('#Alsace').css('opacity', 1);
+	 		$(carte).find('#Loraine').css('opacity', 1);
+	 		$(carte).find('#Nord').css('opacity', 1);
+	 		$(carte).find('#Champagne').css('opacity', 1);
+	 		$(carte).find('#Picardie').css('opacity', 1);
+	 		$(carte).find('#Bourgogne').css('opacity', 1);
+	 		$(carte).find('#Franche').css('opacity', 1);
+	 		$(carte).find('#RhoneAlpes').css('opacity', 1);
+	 		$(carte).find('#Auvergne').css('opacity', 1);
+	 		$(carte).find('#Languedoc').css('opacity', 1);
+	 		$(carte).find('#PACA').css('opacity', 1);
+	 		$(carte).find('#Haute_Normandie').css('opacity', 1);
+	 		$(carte).find('#Basse_Normandie').css('opacity', 1);
+	 		$(carte).find('#Centre').css('opacity', 1);
+	 		$(carte).find('#PDL').css('opacity', 1);
+	 		$(carte).find('#IDF').css('opacity', 1);
+	 		$(carte).find('#Bretagne').css('opacity', 1);
+	 		$(carte).find('#Limousin').css('opacity', 1);
+	 		$(carte).find('#Corse').css('opacity', 1);
+	 		$(carte).find('#Poitou').css('opacity', 1);
+	 		$(carte).find('#Aquitaine').css('opacity', 1);
+	 		$(carte).find('#Midi').css('opacity', 1);
+	 	};
+	 	['#carteToday', '#carteWeek'].map(e => a(e));	
+	 }, 10);
+	};
 
-function CleanDataAll() {
+	function CleanDataAll() {
 	/*
 	 * @Desc: To clean graphs
 	 */
-	cleanDataGraph(0, activeChart);
-	cleanDataGraph(1, activeChart);
-	cleanDataGraph(2, activeChart);
-	cleanDataGraph(3, activeChart);
-	cleanDataGraph(4, activeChart);
-	cleanDataGraph(0, activeChart2);
-	cleanDataGraph(1, activeChart2);
-	cleanDataGraph(2, activeChart2);
-	cleanDataGraph(3, activeChart2);
-	cleanDataGraph(4, activeChart2);
-}
+	 cleanDataGraph(0, activeChart);
+	 cleanDataGraph(1, activeChart);
+	 cleanDataGraph(2, activeChart);
+	 cleanDataGraph(3, activeChart);
+	 cleanDataGraph(4, activeChart);
+	 cleanDataGraph(0, activeChart2);
+	 cleanDataGraph(1, activeChart2);
+	 cleanDataGraph(2, activeChart2);
+	 cleanDataGraph(3, activeChart2);
+	 cleanDataGraph(4, activeChart2);
+	}
 
-$(document).ready(function() {
+	$(document).ready(function() {
 	/*
 	 * @Desc: When document is ready.
 	 */
@@ -131,9 +131,9 @@ $(document).ready(function() {
 
 	$('#graphTwit').click(function() { // Twitter
 		dataview = dataviewList[0];
-		// Clean graph
+		// Clean graphic
 		CleanDataAll();
-		// View New line
+		// View new line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphTwit').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
@@ -146,9 +146,9 @@ $(document).ready(function() {
 
 	$('#graphSites').click(function() { // Websites
 		dataview = dataviewList[2];
-		// Clean graph
+		// Clean graphic
 		CleanDataAll();
-		// View New line
+		// View new line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphSites').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
@@ -160,9 +160,9 @@ $(document).ready(function() {
 
 	$('#graphFace').click(function() { // Facebook
 		dataview = dataviewList[1];
-		// Clean graph
+		// Clean graphic
 		CleanDataAll();
-		// View New line
+		// View new line
 		$('.graphselected').removeClass('graphselected');
 		$('#graphFace').addClass('graphselected');
 		$('.selecttwo').removeClass('selecttwo');
@@ -174,13 +174,13 @@ $(document).ready(function() {
 	});
 
 	function cleanVille() {
-		// Clean villes & target on the map
+		// Clean cities & target on the map
 		$('body').find('.city').hide();
 		trajetSVGCandidat.map(e => e.map(s => $('body').find('#'+s).hide()));
 	}
 
 	function afficherTrajet(candidat, date) {
-		// To view a trajet
+		// To view a ride
 		cleanVille();
 		var j = 0;
 		for (var i = 0; i < date - 1; i++) {
@@ -234,29 +234,29 @@ $(document).ready(function() {
 
 	var listCandidat = {
 		melenchon: [
-			'Jean-Luc Mélenchon',
-			'France Insoumise',
-			"Sous les couleurs de la coalition du Front de gauche, dont le PG fait partie, il est élu député européen dans la circonscription Sud-Ouest en 2009 et réélu en 2014. Il est candidat de cette coalition à l'élection présidentielle de 2012, où il arrive en quatrième position au premier tour, avec 11,1 % des voix. Il est candidat à l'élection présidentielle de 2017, « hors cadre de partis » et sans le Front de gauche, mais au nom du mouvement La France Insoumise (FI), qu'il fonde en février 2016."
+		'Jean-Luc Mélenchon',
+		'France Insoumise',
+		"Sous les couleurs de la coalition du Front de gauche, dont le PG fait partie, il est élu député européen dans la circonscription Sud-Ouest en 2009 et réélu en 2014. Il est candidat de cette coalition à l'élection présidentielle de 2012, où il arrive en quatrième position au premier tour, avec 11,1 % des voix. Il est candidat à l'élection présidentielle de 2017, « hors cadre de partis » et sans le Front de gauche, mais au nom du mouvement La France Insoumise (FI), qu'il fonde en février 2016."
 		],
 		lepen: [
-			'Marine Le Pen',
-			'Front National',
-			"Elle est élue présidente du Front national au congrès de Tours de janvier 2011, succédant ainsi à son père, Jean-Marie Le Pen, qui dirigeait le parti depuis sa fondation. Candidate à l'élection présidentielle de 2012, elle arrive en troisième position au premier tour en obtenant 17,90 % des suffrages exprimés, soit un meilleur résultat que tous ceux obtenus par son père au premier tour d'une élection présidentielle française."
+		'Marine Le Pen',
+		'Front National',
+		"Elle est élue présidente du Front national au congrès de Tours de janvier 2011, succédant ainsi à son père, Jean-Marie Le Pen, qui dirigeait le parti depuis sa fondation. Candidate à l'élection présidentielle de 2012, elle arrive en troisième position au premier tour en obtenant 17,90 % des suffrages exprimés, soit un meilleur résultat que tous ceux obtenus par son père au premier tour d'une élection présidentielle française."
 		],
 		macron: [
-			'Emmanuel Macron',
-			'En marche !',
-			"Membre du Parti socialiste entre 2006 et 2009, il est nommé secrétaire général adjoint de la présidence de la République auprès de François Hollande en 2012 puis ministre de l'Économie, de l'Industrie et du Numérique en 2014 dans le gouvernement Manuel Valls II. \nEn avril 2016, il fonde le mouvement politique « En marche ! » puis démissionne de ses fonctions de ministre en août de la même année. Trois mois plus tard, le 16 novembre, il annonce sa candidature à l'élection présidentielle de 2017."
+		'Emmanuel Macron',
+		'En marche !',
+		"Membre du Parti socialiste entre 2006 et 2009, il est nommé secrétaire général adjoint de la présidence de la République auprès de François Hollande en 2012 puis ministre de l'Économie, de l'Industrie et du Numérique en 2014 dans le gouvernement Manuel Valls II. \nEn avril 2016, il fonde le mouvement politique « En marche ! » puis démissionne de ses fonctions de ministre en août de la même année. Trois mois plus tard, le 16 novembre, il annonce sa candidature à l'élection présidentielle de 2017."
 		],
 		fillon: [
-			'François Fillon',
-			'Les républicains',
-			"Le 17 mai 2007, à la suite de la victoire de Nicolas Sarkozy à l'élection présidentielle, il est nommé Premier ministre, conduisant trois gouvernements et étant l'unique chef de gouvernement de la législature. Il quitte ses fonctions le 10 mai 2012, après la défaite de Nicolas Sarkozy à l'élection présidentielle.\n Candidat à la primaire de la droite et du centre de 2016, il défend un programme libéral-conservateur. Il l’emporte au second tour face à Alain Juppé et devient le candidat de son camp pour l'élection présidentielle de 2017."
+		'François Fillon',
+		'Les républicains',
+		"Le 17 mai 2007, à la suite de la victoire de Nicolas Sarkozy à l'élection présidentielle, il est nommé Premier ministre, conduisant trois gouvernements et étant l'unique chef de gouvernement de la législature. Il quitte ses fonctions le 10 mai 2012, après la défaite de Nicolas Sarkozy à l'élection présidentielle.\n Candidat à la primaire de la droite et du centre de 2016, il défend un programme libéral-conservateur. Il l’emporte au second tour face à Alain Juppé et devient le candidat de son camp pour l'élection présidentielle de 2017."
 		],
 		hamon: [
-			'Benoit Hamon',
-			'Parti Socialiste',
-			"Élu député de la onzième circonscription des Yvelines en 2012, il est membre du gouvernement du 16 mai 2012 au 25 août 2014, en tant que ministre délégué à l'Économie sociale et solidaire et à la consommation puis ministre de l'Éducation nationale, de l'Enseignement supérieur et de la Recherche.\n Benoît Hamon remporte la primaire citoyenne de 2017 devant Manuel Valls, et devient ainsi le candidat du Parti socialiste à l'élection présidentielle de 2017."
+		'Benoit Hamon',
+		'Parti Socialiste',
+		"Élu député de la onzième circonscription des Yvelines en 2012, il est membre du gouvernement du 16 mai 2012 au 25 août 2014, en tant que ministre délégué à l'Économie sociale et solidaire et à la consommation puis ministre de l'Éducation nationale, de l'Enseignement supérieur et de la Recherche.\n Benoît Hamon remporte la primaire citoyenne de 2017 devant Manuel Valls, et devient ainsi le candidat du Parti socialiste à l'élection présidentielle de 2017."
 		]
 	}
 
@@ -464,73 +464,73 @@ $(document).ready(function() {
 		}
 	});
 
-	$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
-	$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
 
-	function getDate(jour) {
-		var listJour = ['Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.', 'Lun.', 'Mar.'];
-		return (listJour[(jour-1) % 7]).toString() + ' ' + (((jour-1)%28)+1).toString() + ' ' + ((jour < 29) ? 'février.' : 'mars').toString();
+function getDate(jour) {
+	var listJour = ['Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.', 'Lun.', 'Mar.'];
+	return (listJour[(jour-1) % 7]).toString() + ' ' + (((jour-1)%28)+1).toString() + ' ' + ((jour < 29) ? 'février.' : 'mars').toString();
+
+}
+
+$('body').find('#mapday1+').click(() => {
+	((mapdayi <= 48) ? mapdayi++ : NaN);
+	$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+	updateMap();
+	afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
+
+});
+
+$('body').find('#mapday1-').click(() => {
+	((mapdayi > 1) ? mapdayi-- : NaN);
+	$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
+	updateMap();
+	afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
+
+});
+
+$('body').find('#mapday2+').click(() => {
+	((mapdayj <= 48) ? mapdayj++ : NaN);
+	$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+	updateMap();
+
+});
+
+$('body').find('#mapday2-').click(() => {
+	((mapdayj > 1) ? mapdayj-- : NaN);
+	$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
+	updateMap();
+
+});
+
+document.addEventListener('scroll', function (event) {
+
+	if ($('body').scrollTop() >= 1400) {
+		pos = 1;
+		$('#conseil').show()
+		if (listSelected[4] === 1) {
+			$('#lepen').addClass('selecttwo');
+		}
+		if (listSelected[1] === 1) {
+			$('#macron').addClass('selecttwo');
+		}
+		if (listSelected[3] === 1) {
+			$('#fillon').addClass('selecttwo');
+		}
+		if (listSelected[2] === 1) {
+			$('#hamon').addClass('selecttwo');
+		}
+		if (listSelected[0] === 1) {
+			$('#melenchon').addClass('selecttwo');
+		}
 
 	}
-
-	$('body').find('#mapday1+').click(() => {
-		((mapdayi <= 48) ? mapdayi++ : NaN);
-		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
-		updateMap();
-		afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
-
-	});
-
-	$('body').find('#mapday1-').click(() => {
-		((mapdayi > 1) ? mapdayi-- : NaN);
-		$('body').find('#mapday1')[0].innerHTML = getDate(mapdayi);
-		updateMap();
-		afficherTrajet($('nav').find('.selected')[0].id, mapdayi);
-
-	});
-
-	$('body').find('#mapday2+').click(() => {
-		((mapdayj <= 48) ? mapdayj++ : NaN);
-		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
-		updateMap();
-
-	});
-
-	$('body').find('#mapday2-').click(() => {
-		((mapdayj > 1) ? mapdayj-- : NaN);
-		$('body').find('#mapday2')[0].innerHTML = getDate(mapdayj);
-		updateMap();
-
-	});
-
-	document.addEventListener('scroll', function (event) {
-
-		if ($('body').scrollTop() >= 1400) {
-		 	pos = 1;
-		 	$('#conseil').show()
-		 	if (listSelected[4] === 1) {
-				$('#lepen').addClass('selecttwo');
-			}
-			if (listSelected[1] === 1) {
-				$('#macron').addClass('selecttwo');
-			}
-			if (listSelected[3] === 1) {
-				$('#fillon').addClass('selecttwo');
-			}
-			if (listSelected[2] === 1) {
-				$('#hamon').addClass('selecttwo');
-			}
-			if (listSelected[0] === 1) {
-				$('#melenchon').addClass('selecttwo');
-			}
-
-		}
-		else {
-			pos = 0;
-			$('#conseil').hide()
-			$('.selecttwo').removeClass('selecttwo');
-		}
-	}, true /*Capture event*/);
+	else {
+		pos = 0;
+		$('#conseil').hide()
+		$('.selecttwo').removeClass('selecttwo');
+	}
+}, true /* Event capture */);
 
 
 	// Initialization

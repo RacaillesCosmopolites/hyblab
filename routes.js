@@ -10,7 +10,7 @@ module.exports = function(app, express) {
     utils.graph((err, html) => {
       res.render('index.ejs', {graph: html});
     })
- });   
+  });   
 
   app.get('*', (req, res) => {
     res.status(404).send('Ouch');

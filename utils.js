@@ -3,9 +3,10 @@ module.exports = function(app, express) {
    *  @Desc: Module pour gérer le render des
    *  différentes pages.
    */
-  var module = {};
 
-  var datamod = require('./data.js')(app, express);
+   var module = {};
+
+   var datamod = require('./data.js')(app, express);
 
   var list = [{}]; // Data except region
   var gtrends = [{}]; // regions
@@ -21,8 +22,8 @@ module.exports = function(app, express) {
 
 
   /*
-   * @Title: Json to Data PART
-   * @Desc: To convert each Json into a javascript's variable
+   * @Title: JSON to Data PART
+   * @Desc: To convert each JSON file into a javascript's variable
    */
 
   // Regions
@@ -49,28 +50,28 @@ module.exports = function(app, express) {
   JsontoArr('./json/Tweeter/'+listRT[3], list, 'JLM', 'RT', 'NBRETWEETS');
   JsontoArr('./json/Tweeter/'+listRT[4], list, 'MAC', 'RT', 'NBRETWEETS');
 
-  // Websites
+  // Official Websites
   JsontoArr('./json/Websites/'+listWeb[0], list, 'FIL', 'web', 'Vue');
   JsontoArr('./json/Websites/'+listWeb[1], list, 'BNH', 'web', 'Vue');
   JsontoArr('./json/Websites/'+listWeb[2], list, 'MLP', 'web', 'Vue');
   JsontoArr('./json/Websites/'+listWeb[3], list, 'JLM', 'web', 'Vue');
   JsontoArr('./json/Websites/'+listWeb[4], list, 'MAC', 'web', 'Vue');
 
-  // Fbfans
+  // Facebook fans
   JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'FIL', 'fb', 'Fillon');
   JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'MLP', 'fb', 'MLP');
   JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'JLM', 'fb', 'JLM');
   JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'MAC', 'fb', 'macron');
   JsontoArr('./json/Facebook/fb_fans_change_per_day.json', list, 'BNH', 'fb', 'BNH');
 
-  // Fb fan total
+  // total Facebook fans
   JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'FIL', 'fan', 'Fillon');
   JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'MLP', 'fan', 'MLP');
   JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'JLM', 'fan', 'JLM');
   JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'MAC', 'fan', 'macron');
   JsontoArr('./json/Facebook/fb_fantotal_per_day.json', list, 'BNH', 'fan', 'BNH');
 
-  // graphdata
+  // Graphdata
   var data = datamod.data;
   var options = datamod.options;
 
