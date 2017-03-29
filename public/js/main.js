@@ -1,14 +1,23 @@
+// @Desc: GlobalVariables----------
+
+// day of each maps
 var mapdayi = 1;
 var mapdayj = 1;
+
+// selection memory
 var listSelected = [0,0,0,0,0];
+
+// dataview list available
 var dataviewList = [
 ['tweet', 'RT'],
 ['fb', 'fan'],
 ['web', 'web']
 ];
 
+// actual dataview
 var dataview = dataviewList[0];
 
+// to convert candidats
 var candidatToInt = {
 	lepen: 4,
 	macron: 1,
@@ -33,6 +42,7 @@ var candidatToAbrv = {
 	4: 'MLP'
 }
 
+// candidats' destinations
 var villeCandidat = [[], [], [], [], []];
 var trajetCandidat = [[], [], [], [], []];
 var trajetSVGCandidat = [[], [], [], [], []];
@@ -41,28 +51,26 @@ villeCandidat[candidatToInt['hamon']] = ["Blois", "Arras", "Brest", "Reims", "Ma
 trajetCandidat[candidatToInt['hamon']] = [21, 23, 29, 32, 36, 38, 43, 47];
 trajetSVGCandidat[candidatToInt['hamon']] = ['bnh1','bnh2','bnh3','bnh4','bnh5','bnh6','bnh7','bnh8']
 
-
 villeCandidat[candidatToInt['fillon']] = ["Paris", "Nimes", "Paris", "Paris", "Orleans", "Besancon", "Caen"];
 trajetCandidat[candidatToInt['fillon']] = [24, 30, 32, 33, 35, 37, 44];
 trajetSVGCandidat[candidatToInt['fillon']] = ['fillon1','fillon2','fillon3','fillon4','fillon5', 'fillon6', 'fillon7'];
-
 
 villeCandidat[candidatToInt['lepen']] = ["Lyon", "Nantes", "Châteauroux", "Metz"];
 trajetCandidat[candidatToInt['lepen']] = [5, 26, 39, 46];
 trajetSVGCandidat[candidatToInt['lepen']] = ['lepen1','lepen2','lepen3','lepen4']
 
-
 villeCandidat[candidatToInt['macron']] = ["Lyon", "Toulon", "Londres", "Rocamadour", "Angers", "Paris", "Caen", "Bordeaux"];//, "Dijon"]
 trajetCandidat[candidatToInt['macron']] = [5, 18, 21, 24, 28, 30, 32, 37];//51];
 trajetSVGCandidat[candidatToInt['macron']] = ['macron1', 'macron1b','macron2','macron3','macron4','macron5','macron6','macron7','macron8']
-
 
 villeCandidat[candidatToInt['melenchon']] = ["Lyon", "Strasbourg"];//, "Paris", "Rennes", "Le Havre"];
 trajetCandidat[candidatToInt['melenchon']] = [5, 15]; //46, ]
 trajetSVGCandidat[candidatToInt['melenchon']] = ['melenchon1','melenchon2','melenchon3']
 
-
 function CleanMap(toclean) {
+	/*
+	 * @Desc: To clean the map after 10ms
+	 */
 	toclean = false;
 	setTimeout(() => {
 
@@ -95,6 +103,9 @@ function CleanMap(toclean) {
 };
 
 function CleanDataAll() {
+	/*
+	 * @Desc: To clean graphs
+	 */
 	cleanDataGraph(0, activeChart);
 	cleanDataGraph(1, activeChart);
 	cleanDataGraph(2, activeChart);
@@ -108,27 +119,17 @@ function CleanDataAll() {
 }
 
 $(document).ready(function() {
+	/*
+	 * @Desc: When document is ready.
+	 */
 
 	var pos = 0; // Position in the page
 
 	/*
-	var slider = document.getElementById('timeline');
-	var time = slider.value+'%';
+	 * @Title: BUTTONS
+	 */
 
-	// $('#timeline').change(function() {
-	// 	$('#velo').css('left', time);
-	// 	time = slider.value+'%';
-	// 	console.log(time);
-	// });
-
-	$('#timeline').click(function() {
-		$('#velo').css('left', time);
-		time = slider.value+'%';
-		console.log(time);
-	});
-	*/
-
-	$('#graphTwit').click(function() {
+	$('#graphTwit').click(function() { // Twitter
 		dataview = dataviewList[0];
 		// Clean graph
 		CleanDataAll();
@@ -143,7 +144,7 @@ $(document).ready(function() {
 		$('#titreGraph')[0].innerHTML = "Nombre de tweets liés aux candidats. / Nombre de retweets";
 	});
 
-	$('#graphSites').click(function() {
+	$('#graphSites').click(function() { // Websites
 		dataview = dataviewList[2];
 		// Clean graph
 		CleanDataAll();
@@ -157,9 +158,9 @@ $(document).ready(function() {
 		$('#titreGraph')[0].innerHTML = "Audience des sites webs des candidats.";
 	});
 
-	$('#graphFace').click(function() {
+	$('#graphFace').click(function() { // Facebook
 		dataview = dataviewList[1];
-		// Clean graph 1
+		// Clean graph
 		CleanDataAll();
 		// View New line
 		$('.graphselected').removeClass('graphselected');
@@ -173,11 +174,13 @@ $(document).ready(function() {
 	});
 
 	function cleanVille() {
+		// Clean villes & target on the map
 		$('body').find('.city').hide();
 		trajetSVGCandidat.map(e => e.map(s => $('body').find('#'+s).hide()));
 	}
 
 	function afficherTrajet(candidat, date) {
+		// To view a trajet
 		cleanVille();
 		var j = 0;
 		for (var i = 0; i < date - 1; i++) {
@@ -546,6 +549,4 @@ $(document).ready(function() {
 	$('#titreGraph')[0].innerHTML = "Nombre de tweets liés au candidat / Nombre de retweets.";
 
 
-
-	// border: 3px #fff solid;
 });
