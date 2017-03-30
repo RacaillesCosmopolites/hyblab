@@ -1,18 +1,14 @@
 module.exports = function(app, express) {
-
+  app.set('views', path.join(__dirname, '/makina_corpus/views/'));
   // Public directory
   console.log(__dirname);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/makina_corpus/' +'/public'));
 
   var utils = require('./utils.js')(app, express);
 
-  app.get('/', (req,res) => {
+  app.get('/makina_corpus/', (req,res) => {
     utils.graph((err, html) => {
       res.render('index.ejs', {graph: html});
     })
   });   
-
-  app.get('*', (req, res) => {
-    res.status(404).send('Ouch');
-  });
 }
