@@ -14,18 +14,18 @@ Patricipants :
 
 # Installation
 
-Installation des dépendances:
+1. Installation des dépendances :
 ```bash
 npm install
 ```
 
-Lancement du serveur:
+2. Lancement du serveur :
 ```bash
 node server.js
 ```
 
 # Informations complémentaires
 
-On a travaillé sur ce dépot.
+- Nous avons directement travaillé sur ce [dépôt](https://github.com/RacaillesCosmopolites/hyblab).
+- Il est préférable d'utiliser le navigateur Google Chrome et un écran d'une résolution supérieure ou égale à 1920x1080 pour profiter pleinement de l'application.
 
-(https://github.com/RacaillesCosmopolites/hyblab)[https://github.com/RacaillesCosmopolites/hyblab]
