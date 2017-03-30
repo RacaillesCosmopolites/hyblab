@@ -6,7 +6,7 @@ module.exports = function(app, express) {
 
    var module = {};
 
-   var datamod = require('./makina_corpus/data.js')(app, express);
+   var datamod = require('./data.js')(app, express);
 
   var list = [{}]; // Data except region
   var gtrends = [{}]; // regions

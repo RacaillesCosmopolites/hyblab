@@ -4,7 +4,7 @@ module.exports = function(app, express) {
   console.log(__dirname);
   app.use(express.static(__dirname + '/public'));
 
-  var utils = require('./makina_corpus/utils.js')(app, express);
+  var utils = require('./utils.js')(app, express);
 
   app.get('/', (req,res) => {
     utils.graph((err, html) => {
