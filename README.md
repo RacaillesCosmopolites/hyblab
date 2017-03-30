@@ -14,4 +14,14 @@ Patricipants :
 
 # Installation
 
+Installation des dépendances:
+```bash
+npm install
+```
+
+Lancement du serveur:
+```bash
+node server.js
+```
+
 # Informations complémentaires
