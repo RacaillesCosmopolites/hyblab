@@ -1,5 +1,5 @@
 module.exports = function(app, express) {
-  app.set('views', path.join(__dirname, '/makina_corpus/views/'));
+  app.set('views', express.static(__dirname + '/makina_corpus/views/'));
   // Public directory
   console.log(__dirname);
   app.use(express.static(__dirname + '/makina_corpus/' +'/public'));
