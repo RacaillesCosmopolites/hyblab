@@ -1,9 +1,8 @@
 module.exports = function(app, express) {
-  var path = require('path');
-  app.set('views', path.join(__dirname, '/makina_corpus/views/'));
   // Public directory
+  app.set('views', __dirname + '/views/');
   console.log(__dirname);
-  app.use(express.static(__dirname + '/makina_corpus/' +'/public'));
+  app.use(express.static(__dirname +'/public'));
 
   var utils = require('./utils.js')(app, express);
 
