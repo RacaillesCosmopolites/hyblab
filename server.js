@@ -24,7 +24,7 @@ if(process.env.NODE_ENV !== 'test') {
 // --- Routes ---
 // ==============
 
-require('./makina_corpus/routes.js')(app, express);
+require('./routes.js')(app, express);
 
 var server = http.createServer(app);
 server.listen(port, function() {
